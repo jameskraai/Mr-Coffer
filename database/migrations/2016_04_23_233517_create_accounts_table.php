@@ -28,6 +28,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('accounts');
     }
 }
