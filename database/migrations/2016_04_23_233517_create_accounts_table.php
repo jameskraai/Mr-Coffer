@@ -14,7 +14,7 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function(Blueprint $table) {
-            $table->increments('id');
+            $table->primary('id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('number');
             $table->foreign('type_id')->references('id')->on('accountTypes');

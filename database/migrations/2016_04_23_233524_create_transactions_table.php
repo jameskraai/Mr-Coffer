@@ -13,7 +13,7 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function(Blueprint $table) {
-            $table->increments('id');
+            $table->primary('id');
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('memo');
             $table->foreign('category_id')->references('id')->on('categories');
