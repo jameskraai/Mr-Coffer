@@ -2,22 +2,15 @@
 
 <form method="POST" action="/auth/login">
     {!! csrf_field() !!}
+    <label for="email">Email</label>
+    <input type="email" name="email" value="{{ old('email') }}" id="email">
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
 
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
+    <label for="remember-me">Remember Me</label>
+    <input type="checkbox" name="remember" id="remember-me">
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
-        <button type="submit">Login</button>
-    </div>
+    <button type="submit">Login</button>
+    <a href="{!! route('register') !!}">Register</a>
 </form>
