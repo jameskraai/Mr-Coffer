@@ -3,27 +3,18 @@
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
 
-    <div>
-        Name
-        <input type="text" name="name" value="{{ old('name') }}">
-    </div>
+    <label for="name">Name</label>
+    <input type="text" name="name" value="{{ old('name') }}" id="name">
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+    <label for="email">Email</label>
+    <input type="email" name="email" value="{{ old('email') }}" id="email">
 
-    <div>
-        Password
-        <input type="password" name="password">
-    </div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
 
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
+    <label for="password_confirmation">Confirm Password</label>
+    <input type="password" name="password_confirmation" id="password_confirmation">
 
-    <div>
-        <button type="submit">Register</button>
-    </div>
+    <button type="submit">Register</button>
+    <a href="{!! route('login') !!}">Back</a>
 </form>
