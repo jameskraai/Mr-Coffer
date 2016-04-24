@@ -16,13 +16,10 @@ class CreateTransactionsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('account_id');
-            $table->foreign('account_id')->references('id')->on('account');
             $table->string('memo');
             $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('amount');
             $table->unsignedInteger('payee_id');
-            $table->foreign('payee_id')->references('id')->on('payees');
             $table->timestamps();
         });
     }
