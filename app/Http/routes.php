@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'DashboardController@index');
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
 // Authentication routes...
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
