@@ -12,7 +12,16 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('transactions', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->unsignedInteger('account_id');
+            $table->string('memo');
+            $table->unsignedInteger('category_id');
+            $table->integer('amount');
+            $table->unsignedInteger('payee_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +31,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('transactions');
     }
 }
