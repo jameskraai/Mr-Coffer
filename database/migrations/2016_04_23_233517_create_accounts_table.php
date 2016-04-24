@@ -14,6 +14,8 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function(Blueprint $table) {
+
+            $table->engine = 'InnoDB';
             $table->primary('id');
             $table->unsignedInteger('user_id');
             $table->integer('number');
