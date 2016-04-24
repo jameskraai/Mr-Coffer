@@ -14,6 +14,7 @@ class CreatePayeesTable extends Migration
     {
         Schema::create('payees', function(Blueprint $table) {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->primary('id');
             $table->string('name');
             $table->timestamps();
