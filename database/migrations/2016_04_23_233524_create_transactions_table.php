@@ -15,7 +15,6 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->primary('id');
             $table->unsignedInteger('account_id');
             $table->string('memo');
             $table->unsignedInteger('category_id');
