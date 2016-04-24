@@ -17,7 +17,8 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('number');
-            $table->string('type');
+            $table->foreign('type_id')->references('id')->on('accountTypes');
+            $table->timestamps();
         });
     }
 
