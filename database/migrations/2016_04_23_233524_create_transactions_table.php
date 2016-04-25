@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->integer('amount');
             $table->unsignedInteger('payee_id');
+            $table->unsignedInteger('status_id');
             $table->timestamps();
         });
     }
