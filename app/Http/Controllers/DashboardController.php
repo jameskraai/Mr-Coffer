@@ -2,9 +2,8 @@
 
 namespace MrCoffer\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use MrCoffer\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Dashboard
@@ -19,6 +18,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('welcome');
+        return view('dashboard.main');
     }
 }
