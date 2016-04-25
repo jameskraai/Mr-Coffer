@@ -3,20 +3,13 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Category
- * The 'category' that a Transaction mave have.
+ * Class Payee
+ * Represents a Payee associated with a Transaction.
  *
  * @package MrCoffer\Transaction
  */
-class Category extends Model
+class Payee extends Model
 {
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'categories';
-    
     /**
      * Mass assignable attributes.
      *
