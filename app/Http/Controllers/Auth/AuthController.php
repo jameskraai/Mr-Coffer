@@ -38,6 +38,13 @@ class AuthController extends Controller
     protected $loginPath = '/login';
 
     /**
+     * Where to redirect to after successfully logging out.
+     *
+     * @var string
+     */
+    protected $redirectAfterLogout = '/login';
+
+    /**
      * Eloquent model instance.
      *
      * @var User
@@ -51,7 +58,7 @@ class AuthController extends Controller
      */
     public function __construct(User $user)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'getLogout']]);
         $this->user = $user;
     }
 
