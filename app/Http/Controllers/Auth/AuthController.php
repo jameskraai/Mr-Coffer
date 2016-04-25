@@ -2,8 +2,8 @@
 
 namespace MrCoffer\Http\Controllers\Auth;
 
-use MrCoffer\User;
 use Validator;
+use MrCoffer\User;
 use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -28,16 +28,38 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
+
+    /**
+     * Where to redirect if login failed.
+     *
+     * @var string
+     */
+    protected $loginPath = '/login';
+
+    /**
+     * Where to redirect to after successfully logging out.
+     *
+     * @var string
+     */
+    protected $redirectAfterLogout = '/login';
+
+    /**
+     * Eloquent model instance.
+     *
+     * @var User
+     */
+    protected $user;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'getLogout']]);
+        $this->user = $user;
     }
 
     /**
@@ -63,10 +85,11 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $this->user->name = $data['name'];
+        $this->user->email = $data['email'];
+        $this->user->password = bcrypt($data['password']);
+        $this->user->save();
+
+        return $this->user;
     }
 }
