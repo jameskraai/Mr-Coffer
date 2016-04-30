@@ -1,6 +1,4 @@
-<?php
-
-namespace MrCoffer;
+<?php namespace MrCoffer\Account;
 
 use Illuminate\Database\Eloquent\Model;
 
