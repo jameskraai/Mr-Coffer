@@ -26,8 +26,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->user->name = 'James';
-        $this->user->email = 'james@example.com';
+        $this->user->name = 'Coffer';
+        $this->user->email = 'mrcoffer@example.com';
         $this->user->password = bcrypt('secret');
         $this->user->save();
     }
