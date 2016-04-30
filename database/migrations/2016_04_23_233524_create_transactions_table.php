@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('account_id');
             $table->string('memo');
             $table->unsignedInteger('category_id');
-            $table->integer('amount');
+            $table->decimal('amount');
             $table->unsignedInteger('payee_id');
             $table->unsignedInteger('status_id');
             $table->timestamps();
