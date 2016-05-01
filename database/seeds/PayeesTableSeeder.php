@@ -29,7 +29,7 @@ class PayeesTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->payee = 'The Greatest Car Shop';
+        $this->payee->name = 'The Greatest Car Shop';
         $this->payee->save();
     }
 }
