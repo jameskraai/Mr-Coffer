@@ -9,30 +9,17 @@ use MrCoffer\Transaction\Status;
 class StatusesTableSeeder extends Seeder
 {
     /**
-     * @var Status
-     */
-    protected $status;
-
-    /**
-     * StatusesTableSeeder constructor.
-     * @param Status $status
-     */
-    public function __construct(Status $status)
-    {
-        $this->status = $status;
-    }
-
-    /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->status->name = 'pending';
-        $this->status->save();
+        $pending = new Status();
+        $pending->name = 'pending';
+        $pending->save();
 
-        $cleared = $this->status->fresh();
+        $cleared = new Status();
         $cleared->name = 'cleared';
         $cleared->save();
     }
