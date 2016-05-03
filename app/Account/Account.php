@@ -15,5 +15,5 @@ class Account extends Model
     *
     * @var array
     */
-    protected $fillable = ['user_id', 'number', 'type_id'];
+    protected $fillable = ['user_id', 'number', 'type_id', 'created_at'];
 }
