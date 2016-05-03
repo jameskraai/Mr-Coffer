@@ -28,6 +28,16 @@ class Account extends Model
     }
 
     /**
+     * Get the User that this Account belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('MrCoffer\User');
+    }
+
+    /**
      * Get the Transactions associated with this Account.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
