@@ -23,4 +23,14 @@ class Category extends Model
      * @var array
      */
     protected $fillable = ['name'];
+
+    /**
+     * Get the Transaction that this belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function transaction()
+    {
+        return $this->belongsTo('MrCoffer\Transaction\Transaction');
+    }
 }

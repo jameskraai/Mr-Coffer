@@ -22,4 +22,44 @@ class Transaction extends Model
         'payee_id',
         'status_id'
     ];
+
+    /**
+     * Get the Account that this Transaction belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function account()
+    {
+        return $this->belongsTo('MrCoffer\Account\Account');
+    }
+
+    /**
+     * Get the Category for this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Category');
+    }
+
+    /**
+     * Get the Payee for this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function payee()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Payee');
+    }
+
+    /**
+     * Get the Status of this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function status()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Status');
+    }
 }
