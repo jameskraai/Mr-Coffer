@@ -32,4 +32,14 @@ class Transaction extends Model
     {
         return $this->belongsTo('MrCoffer\Account\Account');
     }
+
+    /**
+     * Get the Category for this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Category');
+    }
 }
