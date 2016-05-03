@@ -26,4 +26,14 @@ class Account extends Model
     {
         return $this->hasOne('MrCoffer\Account\Type');
     }
+
+    /**
+     * Get the Transactions associated with this Account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions()
+    {
+        return $this->hasMany('MrCoffer\Transaction\Transaction');
+    }
 }
