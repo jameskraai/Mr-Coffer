@@ -25,4 +25,14 @@ class Status extends Model
      * @var array
      */
     protected $fillable = ['name'];
+
+    /**
+     * Get the Transaction this Status belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function transaction()
+    {
+        return $this->belongsTo('MrCoffer\Transaction\Transaction');
+    }
 }
