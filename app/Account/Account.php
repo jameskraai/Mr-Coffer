@@ -16,4 +16,14 @@ class Account extends Model
     * @var array
     */
     protected $fillable = ['user_id', 'number', 'type_id', 'created_at'];
+
+    /**
+     * Get the Type associated with this Account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function type()
+    {
+        return $this->hasOne('MrCoffer\Account\Type');
+    }
 }
