@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use MrCoffer\Http\Requests;
 
-class AccountsController extends Controller
+class AccountController extends Controller
 {
     /**
      * Display a listing of the resource.
