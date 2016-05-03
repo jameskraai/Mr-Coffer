@@ -22,4 +22,14 @@ class Transaction extends Model
         'payee_id',
         'status_id'
     ];
+
+    /**
+     * Get the Account that this Transaction belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function account()
+    {
+        return $this->belongsTo('MrCoffer\Account\Account');
+    }
 }
