@@ -42,4 +42,24 @@ class Transaction extends Model
     {
         return $this->hasOne('MrCoffer\Transaction\Category');
     }
+
+    /**
+     * Get the Payee for this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function payee()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Payee');
+    }
+
+    /**
+     * Get the Status of this Transaction.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function status()
+    {
+        return $this->hasOne('MrCoffer\Transaction\Status');
+    }
 }
