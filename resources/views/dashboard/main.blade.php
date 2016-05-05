@@ -20,9 +20,9 @@
                 <tbody>
                     @foreach($user->accounts as $account)
                         <tr>
-                            <td>{{ $account->name }}</td>
+                            <td><a href="{!! route('account.show', [$account->id]) !!}">{{ $account->name }}</a></td>
                             <td>{{ $account->number }}</td>
-                            <td><a href="{!! route('account.show', [$account->id]) !!}">Edit</a></td>
+                            <td><a href="{!! route('account.edit', [$account->id]) !!}">Edit</a></td>
                         </tr>
                     @endforeach
                 </tbody>
