@@ -1,5 +1,6 @@
 <?php
 
+use MrCoffer\Bank;
 use MrCoffer\User;
 use MrCoffer\Account\Type as AccountType;
 use MrCoffer\Account\Account;
@@ -51,9 +52,12 @@ class AccountsTableSeeder extends Seeder
         $user = $this->user->newQuery()->where('email', 'mrcoffer@example.com')->firstOrFail();
         $accountType = $this->accountType->newQuery()->where('name', 'checking')->firstOrFail();
 
+        $chase = Bank::where('name', 'chase')->first();
+
         $this->account->user_id = $user->id;
         $this->account->number = 11292014;
         $this->account->type_id = $accountType->id;
+        $this->account->bank_id = $chase->id;
         $this->account->save();
     }
 }

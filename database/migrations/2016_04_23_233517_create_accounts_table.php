@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->integer('number')->unique();
             $table->unsignedInteger('type_id');
+            $table->unsignedInteger('bank_id');
             $table->timestamps();
         });
     }
