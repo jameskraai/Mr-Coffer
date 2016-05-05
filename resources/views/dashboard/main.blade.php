@@ -8,15 +8,25 @@
             <h1>Dashboard</h1>
             <h3>{{ $user->name }}</h3>
             <a href="{!! route('logout') !!}">Logout</a>
-
-            <section id="accounts">
-                <h3>Accounts</h3>
-                <ul>
+            <table>
+                <thead>
+                    <tr><th>Accounts</th></tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach($user->accounts as $account)
-                        <li>{{ $account->number }}</li>
+                        <tr>
+                            <td><a href="{!! route('account.show', [$account->id]) !!}">{{ $account->name }}</a></td>
+                            <td>{{ $account->number }}</td>
+                            <td><a href="{!! route('account.edit', [$account->id]) !!}">Edit</a></td>
+                        </tr>
                     @endforeach
-                </ul>
-            </section>
+                </tbody>
+            </table>
         </main>
     </body>
 </html>
