@@ -58,6 +58,7 @@ class AccountsTableSeeder extends Seeder
         $this->account->number = 11292014;
         $this->account->type_id = $accountType->id;
         $this->account->bank_id = $chase->id;
+        $this->account->name = 'My Checking';
         $this->account->save();
     }
 }

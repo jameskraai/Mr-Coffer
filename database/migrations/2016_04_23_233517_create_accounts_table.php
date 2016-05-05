@@ -16,6 +16,7 @@ class CreateAccountsTable extends Migration
 
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('name');
             $table->unsignedInteger('user_id');
             $table->integer('number')->unique();
             $table->unsignedInteger('type_id');
