@@ -36,7 +36,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('account.show');
     }
 
     /**
