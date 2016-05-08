@@ -24,6 +24,6 @@ class Payee extends Model
      */
     public function transaction()
     {
-        return $this->belongsTo('MrCoffer\Transaction\Transaction');
+        return $this->hasMany('MrCoffer\Transaction\Transaction');
     }
 }

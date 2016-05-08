@@ -20,7 +20,10 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogou
 
 // Registration routes...
 Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-Route::post('/register', 'Auth\AuthController@stRegister');
+Route::post('/register', 'Auth\AuthController@Register');
 
-// Accounts Resource Controller
-Route::resource('account', 'AccountController');
+// Account Edit
+Route::get('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\EditController@edit']);
+
+// Account Show
+Route::get('/account/{id}', ['as' => 'account.show', 'uses' => 'Account\ShowController@show']);
