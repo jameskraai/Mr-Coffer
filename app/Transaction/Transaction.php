@@ -40,7 +40,7 @@ class Transaction extends Model
      */
     public function category()
     {
-        return $this->hasOne('MrCoffer\Transaction\Category');
+        return $this->belongsTo('MrCoffer\Transaction\Category');
     }
 
     /**
@@ -60,6 +60,6 @@ class Transaction extends Model
      */
     public function status()
     {
-        return $this->hasOne('MrCoffer\Transaction\Status');
+        return $this->belongsTo('MrCoffer\Transaction\Status');
     }
 }
