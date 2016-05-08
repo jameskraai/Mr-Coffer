@@ -50,7 +50,7 @@ class Transaction extends Model
      */
     public function payee()
     {
-        return $this->hasOne('MrCoffer\Transaction\Payee');
+        return $this->belongsTo('MrCoffer\Transaction\Payee');
     }
 
     /**
