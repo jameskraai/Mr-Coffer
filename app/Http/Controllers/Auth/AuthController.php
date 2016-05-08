@@ -54,7 +54,7 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
+     * @param User $user
      */
     public function __construct(User $user)
     {
