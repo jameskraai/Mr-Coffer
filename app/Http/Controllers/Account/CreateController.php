@@ -1,5 +1,6 @@
 <?php namespace MrCoffer\Http\Controllers\Account;
 
+use Illuminate\View\Factory as View;
 use MrCoffer\Http\Controllers\Controller;
 
 /**
@@ -8,7 +9,8 @@ use MrCoffer\Http\Controllers\Controller;
  */
 class CreateController extends Controller
 {
-    public function create()
+    public function create(View $view)
     {
+        return $view->make('account.create', []);
     }
 }
