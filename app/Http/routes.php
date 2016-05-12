@@ -22,6 +22,12 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogou
 Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('/register', 'Auth\AuthController@Register');
 
+// Account Store
+Route::post('/account/create', ['as' => 'account.store', 'uses' => 'Account\StoreController@store']);
+
+// Account Create
+Route::get('/account/create', ['as' => 'account.create', 'uses' => 'Account\CreateController@create']);
+
 // Account Edit
 Route::get('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\EditController@edit']);
 
