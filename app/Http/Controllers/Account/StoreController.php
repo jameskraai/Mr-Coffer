@@ -72,8 +72,8 @@ class StoreController extends Controller
         $this->validate($this->request, [
             'name' => 'required',
             'number' => 'required|unique:accounts',
-            'account-type' => 'exists:accountTypes,id',
-            'bank' => 'exists:banks,id',
+            'account-type' => 'required|exists:accountTypes,id',
+            'bank' => 'required|exists:banks,id',
         ]);
     }
 }
