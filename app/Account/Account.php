@@ -38,6 +38,16 @@ class Account extends Model
     }
 
     /**
+     * Get the Bank that this Account belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bank()
+    {
+        return $this->belongsTo('MrCoffer\Bank');
+    }
+
+    /**
      * Get the Transactions associated with this Account.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
