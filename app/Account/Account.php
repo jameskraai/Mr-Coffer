@@ -15,7 +15,7 @@ class Account extends Model
     *
     * @var array
     */
-    protected $fillable = ['name', 'user_id', 'number', 'type_id', 'created_at'];
+    protected $fillable = ['name', 'user_id', 'number', 'type_id', 'bank_id', 'created_at'];
 
     /**
      * Get the Type associated with this Account.
@@ -35,6 +35,16 @@ class Account extends Model
     public function user()
     {
         return $this->belongsTo('MrCoffer\User');
+    }
+
+    /**
+     * Get the Bank that this Account belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bank()
+    {
+        return $this->belongsTo('MrCoffer\Bank');
     }
 
     /**
