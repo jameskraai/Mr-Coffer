@@ -44,8 +44,8 @@ class StoreController extends Controller
      * StoreController constructor.
      *
      * @param AuthManager $auth
-     * @param Request     $request
-     * @param Redirector  $redirect
+     * @param Request $request
+     * @param Redirector $redirect
      */
     public function __construct(AuthManager $auth, Request $request, Redirector $redirect)
     {
@@ -70,14 +70,14 @@ class StoreController extends Controller
         $user = $this->auth->guard()->user();
 
         // Set the 'user_id' of the new Account to the authenticated User ID.
-        $account->setAttribute('user_id', $user->getAttribute('id');
+        $account->setAttribute('user_id', $user->getAttribute('id'));
 
         // Validate the received values in the http request.
         $this->validate($this->request, [
-            'name'          => 'required',
-            'number'        => 'required|unique:accounts',
-            'account-type'  => 'required|exists:accountTypes,id',
-            'bank'          => 'required|exists:banks,id',
+            'name' => 'required',
+            'number' => 'required|unique:accounts',
+            'account-type' => 'required|exists:accountTypes,id',
+            'bank' => 'required|exists:banks,id',
         ]);
 
         // Grab the rest of the received items in the request and set as attributes
