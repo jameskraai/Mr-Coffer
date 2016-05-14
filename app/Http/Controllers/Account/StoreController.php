@@ -1,10 +1,9 @@
 <?php namespace MrCoffer\Http\Controllers\Account;
 
-use MrCoffer\Bank;
 use Illuminate\Http\Request;
 use MrCoffer\Account\Account;
 use Illuminate\Auth\AuthManager;
-use MrCoffer\Account\Type as AccountType;
+use Illuminate\Routing\Redirector;
 use MrCoffer\Http\Controllers\Controller;
 
 /**
@@ -17,63 +16,81 @@ use MrCoffer\Http\Controllers\Controller;
 class StoreController extends Controller
 {
     /**
-     * Authentication service.
+     * This service allows us to get and set information about the current
+     * Authentication state - for example we can use it to get the
+     * currently Authenticated User model.
      *
      * @var AuthManager
      */
     protected $auth;
 
     /**
-     * Request service
+     * This is used to validate the received POST data from a form and
+     * pass it to a validator or use it to set against a Model.
      *
      * @var Request
      */
     protected $request;
 
     /**
-     * Account Type model instance.
+     * Useful for making and sending a redirect http response
+     * to a specific named route.
      *
-     * @var AccountType
+     * @var Redirector
      */
-    protected $accountType;
-
-    /**
-     * Bank Model instance.
-     *
-     * @var Bank
-     */
-    protected $bank;
+    protected $redirect;
 
     /**
      * StoreController constructor.
      *
      * @param AuthManager $auth
      * @param Request     $request
-     * @param AccountType $accountType
-     * @param Bank        $bank
+     * @param Redirector  $redirect
      */
-    public function __construct(AuthManager $auth, Request $request, AccountType $accountType, Bank $bank)
+    public function __construct(AuthManager $auth, Request $request, Redirector $redirect)
     {
         $this->middleware('auth');
         $this->auth = $auth;
         $this->request = $request;
-        $this->bank = $bank;
+        $this->redirect = $redirect;
     }
 
     /**
-     * Store a new Account
+     * Validates the received information from the Http Request then assigns all
+     * required properties to a new Account model, if successful this method
+     * will return a RedirectResponse back to the dashboard.
      *
      * @param Account $account
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Account $account)
     {
-        $account->setAttribute('user_id', $this->auth->guard()->user());
+        // Get the currently Authenticated User Eloquent Model.
+        /** @var \Illuminate\Database\Eloquent\Model $user */
+        $user = $this->auth->guard()->user();
 
+        // Set the 'user_id' of the new Account to the authenticated User ID.
+        $account->setAttribute('user_id', $user->getAttribute('id');
+
+        // Validate the received values in the http request.
         $this->validate($this->request, [
-            'name' => 'required',
-            'number' => 'required|unique:accounts',
-            'account-type' => 'required|exists:accountTypes,id',
-            'bank' => 'required|exists:banks,id',
+            'name'          => 'required',
+            'number'        => 'required|unique:accounts',
+            'account-type'  => 'required|exists:accountTypes,id',
+            'bank'          => 'required|exists:banks,id',
         ]);
+
+        // Grab the rest of the received items in the request and set as attributes
+        // on the new Account model.
+        $account->setAttribute('name', $this->request->input('name'));
+        $account->setAttribute('number', $this->request->input('number'));
+        $account->setAttribute('type_id', $this->request->input('account-type'));
+        $account->setAttribute('bank_id', $this->request->input('bank'));
+
+        // Save the new Account model.
+        $account->save();
+
+        // Redirect back to the dashboard.
+        return $this->redirect->route('dashboard');
     }
 }
