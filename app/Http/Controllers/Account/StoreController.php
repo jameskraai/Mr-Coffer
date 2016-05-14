@@ -3,8 +3,8 @@
 use Illuminate\Http\Request;
 use MrCoffer\Account\Account;
 use Illuminate\Auth\AuthManager;
-use Illuminate\Routing\Redirector;
 use MrCoffer\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector as Redirect;
 
 /**
  * Class StoreController
@@ -36,7 +36,7 @@ class StoreController extends Controller
      * Useful for making and sending a redirect http response
      * to a specific named route.
      *
-     * @var Redirector
+     * @var Redirect
      */
     protected $redirect;
 
@@ -44,10 +44,10 @@ class StoreController extends Controller
      * StoreController constructor.
      *
      * @param AuthManager $auth
-     * @param Request $request
-     * @param Redirector $redirect
+     * @param Request     $request
+     * @param Redirect    $redirect
      */
-    public function __construct(AuthManager $auth, Request $request, Redirector $redirect)
+    public function __construct(AuthManager $auth, Request $request, Redirect $redirect)
     {
         $this->middleware('auth');
         $this->auth = $auth;
