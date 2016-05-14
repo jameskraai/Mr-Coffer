@@ -1,10 +1,11 @@
-<?php
+<?php namespace MrCoffer\Tests\AccountController;
 
+use MrCoffer\Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AccountStoreControllerTest extends TestCase
+class StoreControllerTest extends TestCase
 {
     /**
      * A basic test example.
