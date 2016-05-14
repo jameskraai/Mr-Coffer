@@ -24,9 +24,7 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
+        "psr-4": { "MrCoffer\\Tests\\": "tests/" }
     },
     "scripts": {
         "post-root-package-install": [
