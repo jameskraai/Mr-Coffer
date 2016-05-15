@@ -104,6 +104,7 @@ class StoreControllerTest extends TestCase
      * Test that the the new Account.create view is ble to be used
      * to successfully create a new Account instance.
      *
+     * @covers MrCoffer\Http\Controllers\Account\StoreController::store
      * @return void
      */
     public function testAccountCanBeMade()
@@ -132,6 +133,7 @@ class StoreControllerTest extends TestCase
      * Test that an Account can be saved based on values from the Http Request and the Validator passes,
      * then insert the new Account into the database, then the User is redirected back to the dashboard.
      *
+     * @covers MrCoffer\Http\Controllers\Account\StoreController::store
      * @return void
      */
     public function testAccountSavedValidatorPasses()
@@ -179,6 +181,41 @@ class StoreControllerTest extends TestCase
         $this->redirect->shouldReceive('route')->with('dashboard')->once()->andReturn(true);
 
         // Make the Account\StoreController
+        $storeController = new StoreController($this->authManager, $this->request, $this->redirect, $this->validatorFactory);
+
+        $this->assertTrue($storeController->store($this->newAccount));
+    }
+
+    /**
+     * Test that if the Validator fails then the User is returned back to the account create view.
+     *
+     * @covers MrCoffer\Http\Controllers\Account\StoreController::store
+     * @return void
+     */
+    public function testValidatorFails()
+    {
+        // The User will receive a request for it's ID attribute.
+        $this->authenticatedUser->shouldReceive('getAttribute')->once()->andReturn(10);
+
+        // The Auth Manager will receive a request to get the currently authenticated User
+        // and will then return a new User eloquent model.
+        $this->authManager->shouldReceive('guard->user')->once()->andReturn($this->authenticatedUser);
+
+        // The Account should have the currently authenticated User ID set as an attribute.
+        $this->newAccount->shouldReceive('setAttribute')->withArgs(['user_id', 10]);
+
+        // 'all' will be called on the Request service.
+        $this->request->shouldReceive('all')->withNoArgs()->andReturn([]);
+
+        // The Validator Factory will make a new Validator with the Request and rules and will return a Validator.
+        $this->validatorFactory->shouldReceive('make')->once()->andReturn($this->validator);
+
+        // In this test the validator will fail.
+        $this->validator->shouldReceive('fails')->andReturn(true);
+
+        // Assert that the User will be redirected back to the account.create view.
+        $this->redirect->shouldReceive('route->withErrors->withInput')->once()->andReturn(true);
+
         $storeController = new StoreController($this->authManager, $this->request, $this->redirect, $this->validatorFactory);
 
         $this->assertTrue($storeController->store($this->newAccount));
