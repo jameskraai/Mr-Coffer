@@ -27,5 +27,5 @@
             <option value="{{ $bank->id }}">{{ $bank->name }}</option>
         @endforeach
     </select>
-    <input type="submit" value="Save">
+    <input type="submit" value="Save" name="save">
 </form>
