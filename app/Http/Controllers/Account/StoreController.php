@@ -5,6 +5,7 @@ use MrCoffer\Account\Account;
 use Illuminate\Auth\AuthManager;
 use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector as Redirect;
+use Illuminate\Validation\Factory as ValidatorFactory;
 
 /**
  * Class StoreController
@@ -41,18 +42,26 @@ class StoreController extends Controller
     protected $redirect;
 
     /**
+     * Factory class to make new Validators.
+     *
+     * @var ValidatorFactory
+     */
+    protected $validatorFactory;
+
+    /**
      * StoreController constructor.
      *
      * @param AuthManager $auth
      * @param Request     $request
      * @param Redirect    $redirect
      */
-    public function __construct(AuthManager $auth, Request $request, Redirect $redirect)
+    public function __construct(AuthManager $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
     {
         $this->middleware('auth');
         $this->auth = $auth;
         $this->request = $request;
         $this->redirect = $redirect;
+        $this->validatorFactory = $validatorFactory;
     }
 
     /**
@@ -72,13 +81,17 @@ class StoreController extends Controller
         // Set the 'user_id' of the new Account to the authenticated User ID.
         $account->setAttribute('user_id', $user->getAttribute('id'));
 
-        // Validate the received values in the http request.
-        $this->validate($this->request, [
+        // Make a new validator instance with the required rules.
+        $validator = $this->validatorFactory->make($this->request->all(), [
             'name' => 'required',
             'number' => 'required|unique:accounts',
             'account-type' => 'required|exists:accountTypes,id',
             'bank' => 'required|exists:banks,id',
         ]);
+
+        if ($validator->fails()) {
+            return $this->redirect->route('account.create')->withErrors($validator)->withInput();
+        }
 
         // Grab the rest of the received items in the request and set as attributes
         // on the new Account model.
