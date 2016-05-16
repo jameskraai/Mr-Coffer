@@ -1,7 +1,6 @@
 <?php namespace MrCoffer\Http\Controllers\Account;
 
 use MrCoffer\Bank;
-use Illuminate\Support\Collection;
 use Illuminate\View\Factory as View;
 use MrCoffer\Http\Controllers\Controller;
 use MrCoffer\Account\Type as AccountType;
