@@ -37,4 +37,5 @@
             </option>
         @endforeach
     </select>
+    <input type="submit" name="save" value="Save">
 </form>
