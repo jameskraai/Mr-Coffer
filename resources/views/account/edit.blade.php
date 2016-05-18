@@ -7,8 +7,11 @@
         @endforeach
     </ul>
 @endif
-<form action="/" method="post">
+<form method="post">
     {{ csrf_field() }}
+
+    {{-- Make this an update request --}}
+    <input type="hidden" name="_method" value="PATCH">
 
     {{-- Name text field --}}
     <label for="name">Name: </label>
