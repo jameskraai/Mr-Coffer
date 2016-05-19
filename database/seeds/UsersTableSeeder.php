@@ -30,5 +30,11 @@ class UsersTableSeeder extends Seeder
         $this->user->email = 'mrcoffer@example.com';
         $this->user->password = bcrypt('secret');
         $this->user->save();
+
+        $secondUser = new User();
+        $secondUser->setAttribute('name', 'acorn');
+        $secondUser->setAttribute('email', 'acorn@example.com');
+        $secondUser->setAttribute('password', bcrypt('secret'));
+        $secondUser->save();
     }
 }
