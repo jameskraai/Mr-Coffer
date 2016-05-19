@@ -65,18 +65,16 @@ class PatchController extends Controller
 
 
     /**
-     * Update the Account 
+     * Validates the incoming request from the edit Account form, then checks for which values have
+     * changed (if any) then if something has changed perform a database update of the Account
+     * record then route the User back to the dashboard.
      *
-     * @param int     $id
-     * @param Account $account
+     * @param int     $id      The ID of the Account to be updated.
+     * @param Account $account Account model to update the database with.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function patch($id, Account $account)
     {
-        /** @var \Illuminate\Database\Eloquent\Model $user */
-        // Get the current authenticated User.
-        $user = $this->auth->guard()->user();
-
         /** @var \Illuminate\Database\Eloquent\Model  $account */
         $account = $account->query()->findOrFail($id);
 
