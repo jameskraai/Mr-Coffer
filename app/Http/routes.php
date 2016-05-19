@@ -31,5 +31,8 @@ Route::get('/account/create', ['as' => 'account.create', 'uses' => 'Account\Crea
 // Account Edit
 Route::get('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\EditController@edit']);
 
+// Account Update
+Route::patch('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\PatchController@patch']);
+
 // Account Show
 Route::get('/account/{id}', ['as' => 'account.show', 'uses' => 'Account\ShowController@show']);
