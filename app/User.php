@@ -1,7 +1,6 @@
-<?php
+<?php namespace MrCoffer;
 
-namespace MrCoffer;
-
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -32,5 +31,16 @@ class User extends Authenticatable
     public function accounts()
     {
         return $this->hasMany('MrCoffer\Account\Account');
+    }
+
+    /**
+     * Check to see if this Account owns a related model.
+     *
+     * @param Model $related
+     * @return bool
+     */
+    public function owns(Model $related)
+    {
+        return $this->getAttribute('id') == $related->getAttribute('user_id');
     }
 }
