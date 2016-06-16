@@ -2,6 +2,8 @@
 
 namespace MrCoffer\Providers;
 
+use MrCoffer\Account\Account;
+use MrCoffer\Policies\AccountPolicy;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'MrCoffer\Model' => 'MrCoffer\Policies\ModelPolicy',
+        Account::class => AccountPolicy::class
     ];
 
     /**
