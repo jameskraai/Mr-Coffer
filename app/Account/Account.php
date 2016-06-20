@@ -11,10 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     /**
-    * Mass assignable attributes.
-    *
-    * @var array
-    */
+     * Mass assignable attributes, the created_at attribute is fillable
+     * here because it represents when the account was made at
+     * the financial institution.
+     *
+     * @var array
+     */
     protected $fillable = ['name', 'user_id', 'number', 'type_id', 'bank_id', 'created_at'];
 
     /**
