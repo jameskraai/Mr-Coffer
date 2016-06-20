@@ -21,6 +21,7 @@
             <directory suffix=".php">./app</directory>
             <exclude>
                 <file>./app/Http/routes.php</file>
+                <file>./app/Exceptions/Handler.php</file>
             </exclude>
         </whitelist>
     </filter>
