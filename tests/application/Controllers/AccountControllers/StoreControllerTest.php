@@ -3,7 +3,6 @@
 use Mockery;
 use Mockery\Mock;
 use MrCoffer\Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use MrCoffer\Http\Controllers\Account\StoreController;
 
 /**
@@ -14,7 +13,6 @@ use MrCoffer\Http\Controllers\Account\StoreController;
  */
 class StoreControllerTest extends TestCase
 {
-    use DatabaseMigrations;
 
     /**
      * Auth Manager service that the controller requires in
