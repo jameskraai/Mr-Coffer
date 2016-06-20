@@ -31,3 +31,20 @@ $factory->define(MrCoffer\Account\Type::class, function(Faker\Generator $faker) 
         'name' => $faker->name
     ];
 });
+
+$factory->define(\MrCoffer\Account\Account::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->title,
+        'user_id' => function() {
+            return factory(MrCoffer\User::class)->create()->id;
+        },
+        'number' => $faker->numberBetween(100, 1000),
+        'type_id' => function() {
+            return factory(MrCoffer\Account\Type::class)->create()->id;
+        },
+        'bank_id' => function() {
+            return factory(MrCoffer\Bank::class)->create()->id;
+        },
+    ];
+});
+
