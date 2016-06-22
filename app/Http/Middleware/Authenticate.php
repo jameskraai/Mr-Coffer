@@ -65,17 +65,16 @@ class Authenticate
     public function handle(Request $request, Closure $next, $guard = null)
     {
         if ($this->authManager->guard($guard)->guest()) {
+
             if ($request->ajax() || $request->wantsJson()) {
 
                 $this->response->setContent('Unauthorized.');
                 $this->response->setStatusCode(401);
 
                 return $this->response->send();
-
-            } else {
-
-                return $this->redirect->guest('login');
             }
+
+            return $this->redirect->guest('login');
         }
 
         return $next($request);
