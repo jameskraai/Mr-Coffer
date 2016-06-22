@@ -47,10 +47,9 @@ class PatchController extends Controller
     /**
      * PatchController constructor.
      *
-     * @param AuthManager $auth
-     * @param Request $
-     * @param $request
-     * @param Redirect $redirect
+     * @param AuthManager      $auth
+     * @param Request          $request
+     * @param Redirect         $redirect
      * @param ValidatorFactory $validatorFactory
      */
     public function __construct(AuthManager $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
