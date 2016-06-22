@@ -4,13 +4,14 @@ use Closure;
 use Mockery;
 use Mockery\Mock;
 use MrCoffer\Http\Middleware\Authenticate;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
  * Class AuthenticateTest
  * 
  * @package MrCoffer\Tests
  */
-class AuthenticateTest extends TestCase
+class AuthenticateTest extends PHPUnit
 {
     /**
      * Middleware we are testing.
@@ -68,8 +69,8 @@ class AuthenticateTest extends TestCase
         $this->response = Mockery::mock('Illuminate\Http\Response');
         $this->request = Mockery::mock('Illuminate\Http\Request');
         $this->redirect = Mockery::mock('Illuminate\Routing\Redirector');
-        $this->next = function($request) {
-           return $request;
+        $this->next = function() {
+           return true;
         };
 
         $this->authenticate = new Authenticate($this->authManager, $this->response, $this->redirect);
@@ -127,6 +128,21 @@ class AuthenticateTest extends TestCase
         // The User should be redirected to Login.
         $this->redirect->shouldReceive('guest')->with('login')->andReturn(true);
         
+        $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
+    }
+
+    /**
+     * Test that a User is able to proceed if the Authentication Manager
+     * reports that they are not a guest.
+     *
+     * @return void
+     */
+    public function testUserIsAuthenticated()
+    {
+        // Assert that the User is not a guest.
+        $this->authManager->shouldReceive('guard->guest')->andReturn(false);
+
+        // Assert that the 'next' closure is returned.
         $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
     }
 }
