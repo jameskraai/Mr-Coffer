@@ -65,7 +65,12 @@ class RedirectIfAuthenticatedTest extends PHPUnit
         $this->request = Mockery::mock('Illuminate\Http\Request');
         $this->redirect = Mockery::mock('Illuminate\Routing\Redirector');
         $this->authManager = Mockery::mock('Illuminate\Auth\AuthManager');
-        $this->next = Mockery::mock('Closure')->makePartial();
+
+        // Unfortunately the Closure class is marked as 'final' therefore we cannot mock it.
+        // So then we will simply pass our own closure which returns true for this test.
+        $this->next = function() {
+            return true;
+        };
 
         // Instantiate our middleware class with the required dependencies.
         $this->redirectIfAuthenticated = new RedirectIfAuthenticated($this->authManager, $this->redirect);
@@ -82,5 +87,27 @@ class RedirectIfAuthenticatedTest extends PHPUnit
 
         unset($this->next);
         unset($this->redirectIfAuthenticated);
+    }
+
+    /**
+     * Test that an authenticated User is routed to the dashboard.
+     *
+     * @return void
+     */
+    public function testAuthenticatedUserRoutedToDashboard()
+    {
+        // Set the expectation that the Auth Manager is asked if the received
+        // guard argument is authenticated, in this test the User is
+        // therefore we return true.
+        $this->authManager->shouldReceive('guard->check')->andReturn(true);
+
+        // The Redirect service should receive a request to route the User to the dashboard.
+        // For this test we will return true so that we can assert that the expected
+        // value is returned from the method.
+        $this->redirect->shouldReceive('route')->with('dashboard')->andReturn(true);
+
+        // Assert that the handle method returns true which is what our redirect mock service should
+        // return as the Auth Manager should report that the User is authenticated.
+        $this->assertTrue($this->redirectIfAuthenticated->handle($this->request, $this->next, null));
     }
 }
