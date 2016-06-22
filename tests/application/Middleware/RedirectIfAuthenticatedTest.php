@@ -110,4 +110,20 @@ class RedirectIfAuthenticatedTest extends PHPUnit
         // return as the Auth Manager should report that the User is authenticated.
         $this->assertTrue($this->redirectIfAuthenticated->handle($this->request, $this->next, null));
     }
+
+    /**
+     * Test that the handle method will move on with the next request if the
+     * Auth Manager reports that the User is a guest (not logged in).
+     *
+     * @return void
+     */
+    public function testHandleMovesOnIfGuest()
+    {
+        // Set the Auth Manager to return false upon checking the guest (indicating the User is a guest).
+        $this->authManager->shouldReceive('guard->check')->andReturn(false);
+
+        // In order to move on to the next request our 'handle' method will invoke the $next Closure
+        // and return us the result. For this test our $next Closure simply returns true.
+        $this->assertTrue($this->redirectIfAuthenticated->handle($this->request, $this->next, null));
+    }
 }
