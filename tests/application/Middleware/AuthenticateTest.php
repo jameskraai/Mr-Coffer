@@ -104,6 +104,29 @@ class AuthenticateTest extends TestCase
         // We should therefore send a 401 response.
         $this->response->shouldReceive('setContent');
         $this->response->shouldReceive('setStatusCode')->with(401);
-        $this->response->shouldReceive('send');
+        $this->response->shouldReceive('send')->andReturn(true);
+        
+        $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
+    }
+
+    /**
+     * Test that the Authenticate middleware will route a guest User
+     * back to the login route.
+     *
+     * @return void
+     */
+    public function testMiddlewareRoutesGuestToLogin()
+    {
+        // Assert that the requesting User is a guest.
+        $this->authManager->shouldReceive('guard->guest')->andReturn(true);
+        
+        // Indicate that this is not an AJAX nor JSON request.
+        $this->request->shouldReceive('ajax')->andReturn(false);
+        $this->request->shouldReceive('wantsJson')->andReturn(false);
+        
+        // The User should be redirected to Login.
+        $this->redirect->shouldReceive('guest')->with('login')->andReturn(true);
+        
+        $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
     }
 }
