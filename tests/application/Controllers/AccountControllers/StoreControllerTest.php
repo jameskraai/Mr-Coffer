@@ -2,7 +2,7 @@
 
 use Mockery;
 use Mockery\Mock;
-use MrCoffer\Tests\TestCase;
+use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Account\StoreController;
 
 /**
@@ -11,7 +11,7 @@ use MrCoffer\Http\Controllers\Account\StoreController;
  *
  * @package MrCoffer\Tests\AccountController
  */
-class StoreControllerTest extends TestCase
+class StoreControllerTest extends PHPUnit
 {
 
     /**
@@ -20,14 +20,14 @@ class StoreControllerTest extends TestCase
      *
      * @var Mock
      */
-    public $authManager;
+    private $authManager;
 
     /**
      * Returned User model from the Auth Manager.
      *
      * @var Mock
      */
-    public $authenticatedUser;
+    private $authenticatedUser;
 
     /**
      * Fresh Account model instance that will be assigned attributes
@@ -35,35 +35,42 @@ class StoreControllerTest extends TestCase
      *
      * @var Mock
      */
-    public $newAccount;
+    private $newAccount;
 
     /**
      * Http Request service used to parse data from the post form.
      *
      * @var Mock
      */
-    public $request;
+    private $request;
 
     /**
      * Used to set up and send Http redirects from our controller.
      *
      * @var Mock
      */
-    public $redirect;
+    private $redirect;
 
     /**
      * Used to make fresh Validator instances.
      *
      * @var Mock
      */
-    public $validatorFactory;
+    private $validatorFactory;
 
     /**
      * Returned Validator mock instance from the Validator Factory.
      *
      * @var Mock
      */
-    public $validator;
+    private $validator;
+
+    /**
+     * Instance of the Controller to test against.
+     *
+     * @var StoreController
+     */
+    private $storeController;
 
     /**
      * Set up all of the services this controller requires.
@@ -72,8 +79,6 @@ class StoreControllerTest extends TestCase
      */
     public function setUp()
     {
-        parent::setUp();
-
         // Set up mock instances of all required services.
         $this->authManager = Mockery::mock('Illuminate\Auth\AuthManager');
         $this->authenticatedUser = Mockery::mock('Illuminate\Database\Eloquent\Model');
@@ -82,6 +87,13 @@ class StoreControllerTest extends TestCase
         $this->redirect = Mockery::mock('Illuminate\Routing\Redirector');
         $this->validatorFactory = Mockery::mock('Illuminate\Validation\Factory');
         $this->validator = Mockery::mock('Illuminate\Validation\Validator');
+
+        $this->storeController = new StoreController(
+            $this->authManager,
+            $this->request,
+            $this->redirect,
+            $this->validatorFactory
+        );
     }
 
     /**
@@ -91,8 +103,20 @@ class StoreControllerTest extends TestCase
      */
     public function tearDown()
     {
-        parent::tearDown();
         Mockery::close();
+        unset($this->storeController);
+    }
+
+    /**
+     * Test the upon instantiation the Controller is setup and the middleware is set.
+     *
+     * @return void
+     */
+    public function testControllerSetupMiddlewareSet()
+    {
+        $controller = new StoreController($this->authManager, $this->request, $this->redirect, $this->validatorFactory);
+
+        $this->assertInstanceOf(StoreController::class, $controller);
     }
 
 
@@ -147,10 +171,7 @@ class StoreControllerTest extends TestCase
         // Finally a Redirect Response should be returned to the dashboard route.
         $this->redirect->shouldReceive('route')->with('dashboard')->once()->andReturn(true);
 
-        // Make the Account\StoreController
-        $storeController = new StoreController($this->authManager, $this->request, $this->redirect, $this->validatorFactory);
-
-        $this->assertTrue($storeController->store($this->newAccount));
+        $this->assertTrue($this->storeController->store($this->newAccount));
     }
 
     /**
@@ -183,8 +204,6 @@ class StoreControllerTest extends TestCase
         // Assert that the User will be redirected back to the account.create view.
         $this->redirect->shouldReceive('route->withErrors->withInput')->once()->andReturn(true);
 
-        $storeController = new StoreController($this->authManager, $this->request, $this->redirect, $this->validatorFactory);
-
-        $this->assertTrue($storeController->store($this->newAccount));
+        $this->assertTrue($this->storeController->store($this->newAccount));
     }
 }
