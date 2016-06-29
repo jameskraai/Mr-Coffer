@@ -97,4 +97,35 @@ class AuthControllerTest extends PHPUnit
         // Invoke the method and assert that the result is true.
         $this->assertTrue($method->invoke($this->authController, $requestData));
     }
+
+    /**
+     * Test that the data from the Request is able to parsed and added to a User
+     * model, saved, and then returned from the method.
+     *
+     * @return void
+     */
+    public function testCreateMethodSavesNewUser()
+    {
+        // Array of data from the Http Request with new User information.
+        $requestData = [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'password' => $this->faker->password(6, 20)
+        ];
+
+        // Assert that the properties are set on the User.
+        $this->user->shouldReceive('setAttribute')->withArgs(['name', $requestData['name']]);
+        $this->user->shouldReceive('setAttribute')->withArgs(['email', $requestData['email']]);
+        $this->user->shouldReceive('setAttribute')->withArgs(['password', $requestData['password']]);
+        $this->user->shouldReceive('save');
+
+        // Since the method is protected we must use reflection to grab it.
+        $method = new ReflectionMethod(AuthController::class, 'create');
+
+        // Configure the method to be accessible.
+        $method->setAccessible(true);
+
+        // Invoke the method and assert that our mock User is returned.
+        $this->assertEquals($this->user, $method->invoke($this->authController, $requestData));
+    }
 }
