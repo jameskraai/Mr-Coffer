@@ -2,10 +2,11 @@
 
 namespace MrCoffer\Http\Controllers\Auth;
 
-use Validator;
 use MrCoffer\User;
+use Illuminate\Validation\Validator;
 use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Validation\Factory as ValidatorFactory;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -52,25 +53,35 @@ class AuthController extends Controller
     protected $user;
 
     /**
+     * Factory class to make new Validator instances.
+     *
+     * @see Validator
+     * @var ValidatorFactory
+     */
+    protected $validatorFactory;
+
+    /**
      * Create a new authentication controller instance.
      *
      * @param User $user
+     * @param ValidatorFactory $validatorFactory
      */
-    public function __construct(User $user)
+    public function __construct(User $user, ValidatorFactory $validatorFactory)
     {
         $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'getLogout']]);
         $this->user = $user;
+        $this->validatorFactory = $validatorFactory;
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return $this->validatorFactory->make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
@@ -85,9 +96,9 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $this->user->name = $data['name'];
-        $this->user->email = $data['email'];
-        $this->user->password = bcrypt($data['password']);
+        $this->user->setAttribute('name', $data['name']);
+        $this->user->setAttribute('email', $data['email']);
+        $this->user->setAttribute('password', $data['password']);
         $this->user->save();
 
         return $this->user;
