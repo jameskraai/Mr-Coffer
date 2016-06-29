@@ -1,9 +1,10 @@
 <?php namespace MrCoffer\Http\Controllers\Account;
 
 use MrCoffer\Bank;
-use Illuminate\View\Factory as View;
 use MrCoffer\Http\Controllers\Controller;
 use MrCoffer\Account\Type as AccountType;
+use Illuminate\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View as ViewInterface;
 
 /**
  * Class CreateController
@@ -40,16 +41,16 @@ class CreateController extends Controller
     /**
      * Create a new Account view.
      *
-     * @param View $view
-     * @return \Illuminate\Contracts\View\View
+     * @param ViewFactory $viewFactory
+     * @return ViewInterface
      */
-    public function create(View $view)
+    public function create(ViewFactory $viewFactory)
     {
         $data = [
             'accountTypes' => $this->accountType->all(),
             'banks' => $this->bank->all(),
         ];
 
-        return $view->make('account.create', $data);
+        return $viewFactory->make('account.create', $data);
     }
 }
