@@ -1,7 +1,8 @@
-<?php namespace MrCoffer\Tests;
+<?php namespace MrCoffer\Tests\AccountController;
 
 use Mockery;
 use Mockery\Mock;
+use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Account\ShowController;
 
 /**
@@ -10,7 +11,7 @@ use MrCoffer\Http\Controllers\Account\ShowController;
  *
  * @package MrCoffer\Tests
  */
-class ShowControllerTest extends TestCase
+class ShowControllerTest extends PHPUnit
 {
     /**
      * Account model instance.
@@ -54,8 +55,6 @@ class ShowControllerTest extends TestCase
      */
     public function setUp()
     {
-        parent::setUp();
-
         $this->account = Mockery::mock('MrCoffer\Account\Account');
         $this->gate = Mockery::mock('Illuminate\Contracts\Auth\Access\Gate');
         $this->viewFactory = Mockery::mock('Illuminate\Contracts\View\Factory');
@@ -75,7 +74,6 @@ class ShowControllerTest extends TestCase
      */
     public function tearDown()
     {
-        parent::tearDown();
         Mockery::close();
         unset($this->showCtrl);
     }
