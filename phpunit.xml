@@ -33,5 +33,6 @@
     </php>
     <logging>
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+        <log type="coverage-html" target="tests/html" showUncoveredFiles="false"/>
     </logging>
 </phpunit>
