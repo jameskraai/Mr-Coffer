@@ -83,7 +83,7 @@ class AuthenticateTest extends PHPUnit
      */
     public function tearDown()
     {
-        parent::tearDown();
+        Mockery::close();
         unset($this->authenticate);
     }
 
