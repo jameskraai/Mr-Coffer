@@ -1,0 +1,10 @@
+---
+  - name: Provision Vagrant Environment
+    hosts: vagrant
+    become: yes
+    roles:
+      - server
+      - php
+      - nginx
+      - mysql
+      - sqlite
