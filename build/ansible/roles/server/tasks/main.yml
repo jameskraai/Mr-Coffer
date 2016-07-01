@@ -1,0 +1,27 @@
+---
+  - name: Update Repositories
+    apt: update_cache=yes cache_valid_time=3600
+
+  - name: Upgrade Repositories
+    apt: upgrade=dist
+
+  - name: Install System Packages
+    apt: pkg={{ item }} state=latest
+    with_items:
+      - curl
+      - git
+      - unzip
+      - wget
+      - python-software-properties
+
+  - name: Configure the Timezone
+    template: src=timezone.tpl dest=/etc/timezone
+
+  - name: Set Default System Language Pack
+    shell: locale-gen {{ locale }}
+
+  - name: Add Authorized Key
+    become_user: vagrant
+    authorized_key: user=vagrant key="{{ item }}"
+    with_file:
+      - files/public_key
