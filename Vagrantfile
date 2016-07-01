@@ -1,13 +1,13 @@
 box = 'ubuntu/xenial64'
 hostname = 'mrcoffer.vagrant'
-ip = '192.168.03.13'
+ip = '192.168.13.10'
 cpus = 2
 memory = 2048
 
 Vagrant.configure(2) do |config|
     config.vm.box = box
     config.vm.hostname = hostname
-    config.vm.network :private_network, ip: ip
+    config.vm.network "private_network", ip: ip
 
     config.vm.provider :virtualbox do |vb|
         vb.cpus = cpus
