@@ -1,0 +1,19 @@
+---
+  - name: Add Repository for Ubuntu
+    become: yes
+    apt_repository: repo={{ php_ppa }}
+
+  - name: Update Repositories
+    become: yes
+    apt: update_cache=yes
+
+  - name: Install PHP 7
+    become: yes
+    apt: pkg=php7.0 state=latest
+
+  - name: Install PHP Packages
+    become: yes
+    apt: pkg={{ item }} state=latest
+    with_items: "{{ php_packages }}"
+    when: php_packages is defined
+    notify: restart php7-fpm
