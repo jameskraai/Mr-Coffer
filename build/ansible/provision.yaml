@@ -1,0 +1,5 @@
+---
+  - name: Provision Vagrant Environment
+    hosts: all
+    roles:
+      - server
