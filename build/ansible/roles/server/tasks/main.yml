@@ -1,11 +1,14 @@
 ---
   - name: Update Repositories
+    become: yes
     apt: update_cache=yes cache_valid_time=3600
 
   - name: Upgrade Repositories
+    become: yes
     apt: upgrade=dist
 
   - name: Install System Packages
+    become: yes
     apt: pkg={{ item }} state=latest
     with_items:
       - curl
@@ -15,13 +18,14 @@
       - python-software-properties
 
   - name: Configure the Timezone
+    become: yes
     template: src=timezone.tpl dest=/etc/timezone
 
   - name: Set Default System Language Pack
+    become: yes
     shell: locale-gen {{ locale }}
 
   - name: Add Authorized Key
-    become_user: vagrant
     authorized_key: user=vagrant key="{{ item }}"
     with_file:
       - files/public_key
