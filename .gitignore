@@ -8,3 +8,5 @@ Homestead.json
 /nbproject/
 /tests/html/*
 .vagrant/
+*.log
+*.retry
