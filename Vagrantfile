@@ -1,4 +1,4 @@
-box = 'ubuntu/xenial64'
+box = 'ubuntu/trusty64'
 hostname = 'mrcoffer.vagrant'
 ip = '192.168.13.10'
 cpus = 2
@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
         vb.name = hostname
         vb.memory = memory
     end
-
+    
     # Run the Ansible 'provision' playbook upon provisioning
     # this Vagrant instance.
     config.vm.provision :ansible do |ansible|
