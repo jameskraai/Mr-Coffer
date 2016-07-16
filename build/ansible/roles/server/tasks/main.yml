@@ -29,3 +29,6 @@
     authorized_key: user=vagrant key="{{ item }}"
     with_file:
       - files/public_key
+
+  - name: Make Log Directory
+    file: path=/vagrant/build/log state=directory

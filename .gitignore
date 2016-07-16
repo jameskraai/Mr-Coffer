@@ -10,3 +10,4 @@ Homestead.json
 .vagrant/
 *.log
 *.retry
+build/log/

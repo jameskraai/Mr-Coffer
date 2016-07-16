@@ -1,5 +1,9 @@
 ---
   - name: Provision Vagrant Environment
     hosts: all
+    vars:
+      log_directory: /vagrant/build/log
+      timezone: America/Chicago
     roles:
       - server
+      - php7

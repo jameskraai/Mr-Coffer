@@ -1,0 +1,14 @@
+---
+  - name: Specify Error Log File
+    become: yes
+    ini_file:
+      dest: "{{ cli_ini }}"
+      section: error_log
+      value: "{{ log_directory }}"
+
+  - name: Set the Timezone
+    become: yes
+    ini_file:
+      dest: "{{ cli_ini }}"
+      section: date.timezone
+      value: "{{ timezone }}"
