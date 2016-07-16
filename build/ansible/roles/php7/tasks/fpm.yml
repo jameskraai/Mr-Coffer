@@ -5,6 +5,7 @@
       dest: "{{ fpm.ini }}"
       section: date.timezone
       value: "{{ timezone }}"
+    notify: restart php7-fpm
 
   - name: Set Session Cookies to Http Only
     become: yes
@@ -12,6 +13,7 @@
       dest: "{{ fpm.ini }}"
       section: session.cookie_httponly
       value: true
+    notify: restart php7-fpm
 
   - name: Enable Session Strict Mode
     become: yes
@@ -19,6 +21,7 @@
       dest: "{{ fpm.ini }}"
       section: session.use_strict_mode
       value: 1
+    notify: restart php7-fpm
 
   - name: Disable URL FOpen
     become: yes
@@ -26,6 +29,7 @@
       dest: "{{ fpm.ini }}"
       section: allow_url_fopen
       value: Off
+    notify: restart php7-fpm
 
   - name: Change SOAP.WSDL Directory
     become: yes
@@ -33,6 +37,7 @@
       dest: "{{ fpm.ini }}"
       section: soap.wsdl_cache_dir
       value: "{{ fpm.wsdl_dir }}"
+    notify: restart php7-fpm
 
   - name: Specify Temporary Upload Directory
     become: yes
@@ -40,6 +45,7 @@
       dest: "{{ fpm.ini }}"
       section: upload_tmp_dir
       value: "{{ fpm.upload_tmp_dir }}"
+    notify: restart php7-fpm
 
   - name: Exclude Potentially Harmful PHP Functions
     become: yes
@@ -47,6 +53,7 @@
       dest: "{{ fpm.ini }}"
       section: disable_functions
       value: exec,passthru,shell_exec, system, proc_open,p_open
+    notify: restart php7-fpm
 
   - name: Set Max Post Size
     become: yes
@@ -54,6 +61,7 @@
       dest: "{{ fpm.ini }}"
       section: post_max_size
       value: "{{ fpm.max_post_size }}"
+    notify: restart php7-fpm
 
   - name: Set Memory Limit
     become: yes
@@ -61,6 +69,7 @@
       dest: "{{ fpm.ini }}"
       section: memory_limit
       value: "{{ fpm.memory_limit }}"
+    notify: restart php7-fpm
 
   - name: Set Max Execution Time
     become: yes
@@ -68,6 +77,7 @@
       dest: "{{ fpm.ini }}"
       section: max_execution_time
       value: "{{ fpm.max_execution_time }}"
+    notify: restart php7-fpm
 
   - name: Enable OPcache
     become: yes
@@ -75,6 +85,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.enable
       value: "{{ opcache.enable }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Change Revalidate Frequency
     become: yes
@@ -82,6 +93,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.revalidate_freq
       value: "{{ opcache.revalidate_frequency }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Change Validate Timestamps
     become: yes
@@ -89,6 +101,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.validate_timestamps
       value: "{{ opcache.validate_timestamps }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Change Max Accelerated Files
     become: yes
@@ -96,6 +109,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.max_accelerated_files
       value: "{{ opcache.max_accelerated_files }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Memory Consumption
     become: yes
@@ -103,6 +117,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.memory_consumption
       value: "{{ opcache.memory_consumption }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Interned Strings Buffer
     become: yes
@@ -110,6 +125,7 @@
       dest: "{{ fpm.ini }}"
       section: opcache.interned_strings_buffer
       value: "{{ opcache.interned_strings_buffer }}"
+    notify: restart php7-fpm
 
   - name: OPcache - Fast Shutdown
     become: yes
@@ -117,3 +133,4 @@
       dest: "{{ fpm.ini }}"
       section: opcache.fast_shutdown
       value: "{{ opcache.fast_shutdown }}"
+    notify: restart php7-fpm
