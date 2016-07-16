@@ -9,3 +9,4 @@
       - php7
       - composer
       - mysql
+      - sqlite
