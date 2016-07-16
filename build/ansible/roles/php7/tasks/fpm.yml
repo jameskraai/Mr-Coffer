@@ -1,0 +1,119 @@
+---
+  - name: Set the Timezone
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: date.timezone
+      value: "{{ timezone }}"
+
+  - name: Set Session Cookies to Http Only
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: session.cookie_httponly
+      value: true
+
+  - name: Enable Session Strict Mode
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: session.use_strict_mode
+      value: 1
+
+  - name: Disable URL FOpen
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: allow_url_fopen
+      value: Off
+
+  - name: Change SOAP.WSDL Directory
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: soap.wsdl_cache_dir
+      value: "{{ fpm.wsdl_dir }}"
+
+  - name: Specify Temporary Upload Directory
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: upload_tmp_dir
+      value: "{{ fpm.upload_tmp_dir }}"
+
+  - name: Exclude Potentially Harmful PHP Functions
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: disable_functions
+      value: exec,passthru,shell_exec, system, proc_open,p_open
+
+  - name: Set Max Post Size
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: post_max_size
+      value: "{{ fpm.max_post_size }}"
+
+  - name: Set Memory Limit
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: memory_limit
+      value: "{{ fpm.memory_limit }}"
+
+  - name: Set Max Execution Time
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: max_execution_time
+      value: "{{ fpm.max_execution_time }}"
+
+  - name: Enable OPcache
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.enable
+      value: "{{ opcache.enable }}"
+
+  - name: OPcache - Change Revalidate Frequency
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.revalidate_freq
+      value: "{{ opcache.revalidate_frequency }}"
+
+  - name: OPcache - Change Validate Timestamps
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.validate_timestamps
+      value: "{{ opcache.validate_timestamps }}"
+
+  - name: OPcache - Change Max Accelerated Files
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.max_accelerated_files
+      value: "{{ opcache.max_accelerated_files }}"
+
+  - name: OPcache - Memory Consumption
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.memory_consumption
+      value: "{{ opcache.memory_consumption }}"
+
+  - name: OPcache - Interned Strings Buffer
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.interned_strings_buffer
+      value: "{{ opcache.interned_strings_buffer }}"
+
+  - name: OPcache - Fast Shutdown
+    become: yes
+    ini_file:
+      dest: "{{ fpm.ini }}"
+      section: opcache.fast_shutdown
+      value: "{{ opcache.fast_shutdown }}"

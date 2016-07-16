@@ -1,6 +1,23 @@
 ---
+  fpm:
+    ini: /etc/php/7.0/fpm/php.ini
+    wsdl_dir: /php/cache/wsdl
+    upload_tmp_dir: /php/cache/upload_tmp
+    max_post_size: 2M
+    memory_limit: 128M
+    max_execution_time: 30
+
   php_ppa: "ppa:ondrej/php"
   cli_ini: "/etc/php/7.0/cli/php.ini"
+  opcache:
+    enable: true
+    revalidate_frequency: 2592000
+    validate_timestamps: 1
+    max_accelerated_files: 20000
+    interned_strings_buffer: 16
+    memory_consumption: 192
+    fast_shutdown: 1
+
   php_packages:
     - php7.0-common
     - php7.0-cli
