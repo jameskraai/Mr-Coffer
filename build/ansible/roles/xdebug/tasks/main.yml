@@ -1,0 +1,12 @@
+---
+  - name: Install Xdebug
+    become: yes
+    apt: name=php7.0-xdebug state=latest
+    notify: restart php7-fpm
+
+  - name: Copy the Xdebug Configuration Template
+    become: yes
+    template:
+      src: xdebug.ini.j2
+      dest: "{{ xdebug.ini_file }}"
+
