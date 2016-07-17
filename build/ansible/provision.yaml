@@ -10,3 +10,4 @@
       - composer
       - mysql
       - sqlite
+      - nginx

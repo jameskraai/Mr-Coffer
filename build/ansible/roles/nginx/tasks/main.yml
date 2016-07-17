@@ -1,0 +1,14 @@
+---
+  - name: Install Nginx
+    become: yes
+    apt: pkg=nginx state=latest
+
+  - name: Configure Nginx
+    become: yes
+    template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
+    notify: restart nginx
+
+  - name: Disable default server block
+    become: yes
+    file: path=/etc/nginx/sites-enabled/default state=absent
+    notify: restart nginx
