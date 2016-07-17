@@ -29,3 +29,4 @@
     - php7.0-gd
     - php7.0-mbstring
     - php7.0-mcrypt
+    - php7.0-simplexml

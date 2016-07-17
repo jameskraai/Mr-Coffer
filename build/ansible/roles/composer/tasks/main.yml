@@ -11,6 +11,8 @@
     when: not composer_bin.stat.exists
 
   - name: Run Composer Installer
+    become: yes
+    become_user: vagrant
     shell: php /tmp/composer-installer.php chdir=/tmp
     when: not composer_bin.stat.exists
 
