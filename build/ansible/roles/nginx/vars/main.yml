@@ -1,3 +1,5 @@
 ---
   server:
     user: www-data
+    access_log: /vagrant/build/log/nginx-access.log
+    error_log: /vagrant/build/log/nginx-error.log
