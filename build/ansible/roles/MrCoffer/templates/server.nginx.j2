@@ -1,0 +1,29 @@
+server {
+    listen  80;
+
+    root {{ project.docroot }};
+    index index.html index.php;
+
+    server_name {{ project.servername }};
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    access_log {{ project.access_log }};
+    error_log {{ project.error_log }};
+
+    error_page 404 /index.php;
+
+    sendfile off;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}

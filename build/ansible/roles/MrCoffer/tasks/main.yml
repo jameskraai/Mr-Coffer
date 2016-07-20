@@ -1,0 +1,35 @@
+---
+  - name: Install Composer Packages
+    composer:
+      command: install
+      working_dir: "{{ project.root }}"
+
+  - name: Install Node Packages
+    npm: path={{ project.root }}
+
+  - name: Create Application MySQL Database
+    become: yes
+    mysql_db: name={{ project.name }} state=present
+
+  - name: Refresh and Seed the Database
+    command: php artisan migrate:refresh --seed
+    args:
+      chdir: "{{ project.root }}"
+
+  - name: Create Nginx Server Block
+    become: yes
+    template:
+      src: server.nginx.j2
+      dest: /etc/nginx/sites-available/{{ project.servername }}
+    notify: restart nginx
+
+  - name: Enable Nginx Server Block
+    become: yes
+    file:
+      src: /etc/nginx/sites-available/{{ project.servername }}
+      dest: /etc/nginx/sites-enabled/{{ project.servername }}
+      state: link
+      force: yes
+    notify: restart nginx
+
+
