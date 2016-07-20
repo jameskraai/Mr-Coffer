@@ -6,9 +6,10 @@
       timezone: America/Chicago
     roles:
       - server
-      - php7
-      - composer
-      - xdebug
-      - mysql
-      - sqlite
-      - nginx
+      #- php7
+      #- composer
+      #- xdebug
+      #- mysql
+      #- sqlite
+      #- nginx
+      - nodejs
