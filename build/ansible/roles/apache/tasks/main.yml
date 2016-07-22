@@ -1,0 +1,8 @@
+---
+  - name: Stop Apache Service
+    become: yes
+    service: name=apache2 state=stopped
+
+  - name: Remove Apache
+    become: yes
+    apt: pkg=apache2 state=absent autoremove=yes
