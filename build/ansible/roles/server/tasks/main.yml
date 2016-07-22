@@ -17,10 +17,6 @@
       - wget
       - python-software-properties
 
-  - name: Remove Apache
-    become: yes
-    apt: pkg=apache2 state=absent autoremove=yes
-
   - name: Configure the Timezone
     become: yes
     template: src=timezone.tpl dest=/etc/timezone
