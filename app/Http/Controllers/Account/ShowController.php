@@ -69,7 +69,7 @@ class ShowController extends Controller
      * @param string $id Unique identifier of the Account we would like to view.
      * @return View|RedirectResponse
      */
-    public function show(string $id)
+    public function show($id)
     {
         // Attempt to find the Account database record by the received $id.
         $account = $this->account->query()->where('id', intval($id))->firstOrFail();
