@@ -1,0 +1,6 @@
+---
+xdebug:
+  ini_file: /etc/php/7.0/mods-available/xdebug.ini
+  remote_enabled: on
+  remote_connect_back: on
+  ide_key: vagrant

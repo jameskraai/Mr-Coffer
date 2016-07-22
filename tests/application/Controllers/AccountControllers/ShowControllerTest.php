@@ -89,6 +89,6 @@ class ShowControllerTest extends PHPUnit
         $this->gate->shouldReceive('denies')->withArgs(['canShow', 'Found Account'])->andReturn(false);
         $this->viewFactory->shouldReceive('make')->withArgs(['account.show', ['account' => 'Found Account']])->andReturn(true);
 
-        $this->assertTrue($this->showCtrl->show(1));
+        $this->assertTrue($this->showCtrl->show("1"));
     }
 }

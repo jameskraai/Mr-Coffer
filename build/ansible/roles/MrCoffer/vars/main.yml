@@ -1,0 +1,8 @@
+---
+  project:
+    name: mrcoffer
+    root: /vagrant
+    servername: mrcoffer.vagrant
+    docroot: /vagrant/public
+    access_log: /vagrant/build/log/mrcoffer.vagrant-access.log
+    error_log: /vagrant/build/log/mrcoffer.vagrant-error.log

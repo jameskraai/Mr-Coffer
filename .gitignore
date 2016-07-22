@@ -7,3 +7,7 @@ Homestead.json
 .idea/
 /nbproject/
 /tests/html/*
+.vagrant/
+*.log
+*.retry
+build/log/

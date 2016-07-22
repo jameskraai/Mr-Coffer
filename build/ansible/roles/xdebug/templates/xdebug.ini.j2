@@ -1,0 +1,8 @@
+; configuration for php xdebug module
+; priority=20
+;zend_extension=xdebug.so
+
+[xdebug]
+xdebug.remote_enable = {{ xdebug.remote_enabled }}
+xdebug.remote_connect_back = {{ xdebug.remote_connect_back }}
+xdebug.remote_idekey =  "{{ xdebug.ide_key }}"

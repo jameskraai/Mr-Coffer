@@ -1,0 +1,4 @@
+---
+  node:
+    setup_script: https://deb.nodesource.com/setup_4.x
+

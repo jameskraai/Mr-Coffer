@@ -1,0 +1,7 @@
+---
+  composer:
+    path: /usr/local/bin/composer
+    keep_updated: true
+    home_path: '~/.composer'
+    home_owner: 'vagrant'
+    home_group: 'vagrant'
