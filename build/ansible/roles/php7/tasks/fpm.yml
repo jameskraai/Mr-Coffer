@@ -1,10 +1,21 @@
 ---
-  - name: Add FPM WWW Configuration
+  - name: Configure FPM to run as Vagrant
     become: yes
-    template:
-      src: php7.0-fpm.conf.j2
+    ini_file:
+      section: www
       dest: "{{ fpm.conf }}"
-    notify: restart php7-fpm
+      option: user
+      value: "{{ fpm.user }}"
+      state: present
+
+  - name: Configure FPM to run in Vagrant group
+    become: yes
+    ini_file:
+      section: www
+      dest: "{{ fpm.conf }}"
+      option: group
+      value: "{{ fpm.group }}"
+      state: present
 
   - name: Set the Timezone
     become: yes
