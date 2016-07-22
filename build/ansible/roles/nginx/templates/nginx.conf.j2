@@ -1,5 +1,6 @@
 user {{ server.user }};
 worker_processes auto;
+error_log {{ server.error_log }};
 pid /run/nginx.pid;
 
 events {
@@ -30,7 +31,7 @@ http {
 	# Logging Settings
 	##
 
-	access_log off;
+	access_log {{ server.access_log }};
 
 	##
 	# Gzip Settings

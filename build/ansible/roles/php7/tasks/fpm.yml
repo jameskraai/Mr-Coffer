@@ -1,4 +1,22 @@
 ---
+  - name: Configure FPM to run as Vagrant
+    become: yes
+    ini_file:
+      section: www
+      dest: "{{ fpm.conf }}"
+      option: user
+      value: "{{ fpm.user }}"
+      state: present
+
+  - name: Configure FPM to run in Vagrant group
+    become: yes
+    ini_file:
+      section: www
+      dest: "{{ fpm.conf }}"
+      option: group
+      value: "{{ fpm.group }}"
+      state: present
+
   - name: Set the Timezone
     become: yes
     ini_file:
