@@ -32,3 +32,7 @@
 
   - name: Make Log Directory
     file: path=/vagrant/build/log state=directory
+
+  - name: Add www-data to vagrant group
+    become: yes
+    user: name=www-data groups=vagrant append=yes

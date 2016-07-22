@@ -1,5 +1,8 @@
 ---
   fpm:
+    user: vagrant
+    group: vagrant
+    conf: /etc/php/7.0/fpm/pool.d/www.conf
     ini: /etc/php/7.0/fpm/php.ini
     wsdl_dir: /php/cache/wsdl
     upload_tmp_dir: /php/cache/upload_tmp

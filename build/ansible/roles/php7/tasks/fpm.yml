@@ -1,4 +1,11 @@
 ---
+  - name: Add FPM WWW Configuration
+    become: yes
+    template:
+      src: php7.0-fpm.conf.j2
+      dest: "{{ fpm.conf }}"
+    notify: restart php7-fpm
+
   - name: Set the Timezone
     become: yes
     ini_file:

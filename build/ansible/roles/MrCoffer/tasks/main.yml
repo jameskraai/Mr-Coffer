@@ -2,6 +2,7 @@
   - name: Install Composer Packages
     composer:
       command: install
+      optimize_autoloader: yes
       working_dir: "{{ project.root }}"
 
   - name: Install Node Packages
