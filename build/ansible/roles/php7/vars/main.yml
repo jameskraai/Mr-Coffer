@@ -33,3 +33,4 @@
     - php7.0-mbstring
     - php7.0-mcrypt
     - php7.0-simplexml
+    - php7.0-sqlite3
