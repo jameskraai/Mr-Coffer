@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AddBankForeignKeyToAccountsTable extends Migration
 {
@@ -12,7 +12,7 @@ class AddBankForeignKeyToAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function(Blueprint $table) {
+        Schema::table('accounts', function (Blueprint $table) {
             $table->foreign('bank_id')->references('id')->on('banks'); 
         });
     }
@@ -24,7 +24,7 @@ class AddBankForeignKeyToAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::table('accounts', function(Blueprint $table) {
+        Schema::table('accounts', function (Blueprint $table) {
             $table->dropForeign(['bank_id']); 
         });
     }

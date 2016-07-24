@@ -1,18 +1,18 @@
-<?php namespace MrCoffer\Http\Controllers\Account;
+<?php
 
-use Illuminate\Http\Request;
-use MrCoffer\Account\Account;
+namespace MrCoffer\Http\Controllers\Account;
+
 use Illuminate\Auth\AuthManager as Auth;
-use MrCoffer\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector as Redirect;
 use Illuminate\Validation\Factory as ValidatorFactory;
+use MrCoffer\Account\Account;
+use MrCoffer\Http\Controllers\Controller;
 
 /**
  * Class StoreController
  * This class is responsible for storing a new Account and redirecting back to the dashboard
  * or back to the form with an error message.
- *
- * @package MrCoffer\Http\Controllers\Account
  */
 class StoreController extends Controller
 {
@@ -51,7 +51,7 @@ class StoreController extends Controller
     /**
      * StoreController constructor.
      *
-     * @param Auth            $auth
+     * @param Auth             $auth
      * @param Request          $request
      * @param Redirect         $redirect
      * @param ValidatorFactory $validatorFactory
@@ -71,6 +71,7 @@ class StoreController extends Controller
      * will return a RedirectResponse back to the dashboard.
      *
      * @param Account $account
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Account $account)
@@ -84,10 +85,10 @@ class StoreController extends Controller
 
         // Make a new validator instance with the required rules.
         $validator = $this->validatorFactory->make($this->request->all(), [
-            'name' => 'required',
-            'number' => 'required|unique:accounts',
+            'name'         => 'required',
+            'number'       => 'required|unique:accounts',
             'account-type' => 'required|exists:accountTypes,id',
-            'bank' => 'required|exists:banks,id',
+            'bank'         => 'required|exists:banks,id',
         ]);
 
         if ($validator->fails()) {

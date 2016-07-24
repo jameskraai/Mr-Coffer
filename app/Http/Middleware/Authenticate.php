@@ -2,10 +2,10 @@
 
 namespace MrCoffer\Http\Middleware;
 
+use Illuminate\Auth\AuthManager;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Auth\AuthManager;
 use Illuminate\Routing\Redirector as Redirect;
 
 /**
@@ -13,8 +13,6 @@ use Illuminate\Routing\Redirector as Redirect;
  * This middleware is responsible for determining if a visitor is a guest and enforcing
  * the rules of access if they are. If the current User is not a guest
  * then the middleware moves on.
- *
- * @package MrCoffer\Http\Middleware
  */
 class Authenticate
 {
@@ -57,8 +55,8 @@ class Authenticate
     /**
      * Handle an incoming request.
      *
-     * @param  Request  $request
-     * @param  Closure  $next
+     * @param  Request      $request
+     * @param  Closure      $next
      * @param  string|null  $guard
      * @return mixed
      */

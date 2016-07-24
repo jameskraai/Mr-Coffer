@@ -1,9 +1,12 @@
-<?php namespace MrCoffer\Http\Controllers\Account;
+<?php
 
-use MrCoffer\Bank;
-use MrCoffer\Account\Account;
+namespace MrCoffer\Http\Controllers\Account;
+
+use Illuminate\Contracts\View\View as ViewInterface;
 use Illuminate\View\Factory as View;
+use MrCoffer\Account\Account;
 use MrCoffer\Account\Type as AccountType;
+use MrCoffer\Bank;
 use MrCoffer\Http\Controllers\Controller;
 
 class EditController extends Controller
@@ -48,7 +51,8 @@ class EditController extends Controller
      * Edit an Account.
      *
      * @param $id
-     * @return \Illuminate\Contracts\View\View
+     *
+     * @return ViewInterface
      */
     public function edit($id)
     {

@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 use MrCoffer\Transaction\Category;
 
 /**
- * Class CategoriesTableSeeder
+ * Class CategoriesTableSeeder.
  */
 class CategoriesTableSeeder extends Seeder
 {
     /**
-     * Transaction Category Model
+     * Transaction Category Model.
      *
      * @var Category
      */
@@ -17,6 +17,7 @@ class CategoriesTableSeeder extends Seeder
 
     /**
      * CategoriesTableSeeder constructor.
+     *
      * @param Category $category
      */
     public function __construct(Category $category)

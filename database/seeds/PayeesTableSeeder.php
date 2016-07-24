@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use MrCoffer\Transaction\Payee;
 
 /**
- * Class PayeesTableSeeder
+ * Class PayeesTableSeeder.
  */
 class PayeesTableSeeder extends Seeder
 {
@@ -15,6 +15,7 @@ class PayeesTableSeeder extends Seeder
 
     /**
      * PayeesTableSeeder constructor.
+     *
      * @param Payee $payee
      */
     public function __construct(Payee $payee)

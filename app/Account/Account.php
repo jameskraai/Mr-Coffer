@@ -1,12 +1,12 @@
-<?php namespace MrCoffer\Account;
+<?php
+
+namespace MrCoffer\Account;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * class Account
  * Represents a financial account owned by a User.
- *
- * @package MrCoffer
  */
 class Account extends Model
 {

@@ -1,4 +1,6 @@
-<?php namespace MrCoffer\Tests;
+<?php
+
+namespace MrCoffer\Tests;
 
 class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {

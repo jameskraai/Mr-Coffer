@@ -1,15 +1,15 @@
-<?php namespace MrCoffer\Tests;
+<?php
+
+namespace MrCoffer\Tests;
 
 use Closure;
 use Mockery;
 use Mockery\Mock;
-use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Middleware\RedirectIfAuthenticated;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
- * Class RedirectIfAuthenticatedTest
- *
- * @package MrCoffer\Tests
+ * Class RedirectIfAuthenticatedTest.
  */
 class RedirectIfAuthenticatedTest extends PHPUnit
 {
@@ -68,7 +68,7 @@ class RedirectIfAuthenticatedTest extends PHPUnit
 
         // Unfortunately the Closure class is marked as 'final' therefore we cannot mock it.
         // So then we will simply pass our own closure which returns true for this test.
-        $this->next = function() {
+        $this->next = function () {
             return true;
         };
 

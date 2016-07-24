@@ -1,17 +1,16 @@
-<?php namespace MrCoffer\Tests;
+<?php
 
-use Mockery;
-use MrCoffer\Bank;
-use MrCoffer\User;
+namespace MrCoffer\Tests;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use MrCoffer\Account\Account;
 use MrCoffer\Account\Type as AccountType;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use MrCoffer\Bank;
+use MrCoffer\User;
 
 /**
  * Class AccountTest
  * These tests concern any action the User can take on the Account page.
- *
- * @package MrCoffer\Tests
  */
 class AccountTest extends TestCase
 {
@@ -51,6 +50,7 @@ class AccountTest extends TestCase
      * to successfully create a new Account instance.
      *
      * @covers MrCoffer\Http\Controllers\Account\StoreController::store
+     *
      * @return void
      */
     public function testAccountCanBeMade()
@@ -94,7 +94,7 @@ class AccountTest extends TestCase
          * in the database and make a new Eloquent Model from it. We will use this
          * to authenticate into our app as the User that owns the Account.
          *
-         * @var User $user
+         * @var User
          */
         $user = $this->user->newQuery()->findOrFail($userID);
 
@@ -130,7 +130,6 @@ class AccountTest extends TestCase
 
         // Since the Account did not belong to the User the application
         // should route us back to the dashboard.
-        $this->seePageIs("dashboard");
+        $this->seePageIs('dashboard');
     }
 }
-
