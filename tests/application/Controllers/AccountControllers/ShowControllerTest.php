@@ -1,15 +1,15 @@
-<?php namespace MrCoffer\Tests\AccountController;
+<?php
+
+namespace MrCoffer\Tests\AccountController;
 
 use Mockery;
 use Mockery\Mock;
-use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Account\ShowController;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
  * Class ShowControllerTest
  * Test the logical controller methods that handle the incoming requests and return the view.
- *
- * @package MrCoffer\Tests
  */
 class ShowControllerTest extends PHPUnit
 {
@@ -89,6 +89,6 @@ class ShowControllerTest extends PHPUnit
         $this->gate->shouldReceive('denies')->withArgs(['canShow', 'Found Account'])->andReturn(false);
         $this->viewFactory->shouldReceive('make')->withArgs(['account.show', ['account' => 'Found Account']])->andReturn(true);
 
-        $this->assertTrue($this->showCtrl->show("1"));
+        $this->assertTrue($this->showCtrl->show('1'));
     }
 }

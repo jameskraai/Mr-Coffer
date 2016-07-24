@@ -1,12 +1,12 @@
-<?php namespace MrCoffer\Tests;
+<?php
 
-use PHPUnit_Framework_TestCase as PHPUnit;
+namespace MrCoffer\Tests;
+
 use MrCoffer\Http\Controllers\Auth\PasswordController;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
- * Class PasswordControllerTest
- *
- * @package MrCoffer\Tests
+ * Class PasswordControllerTest.
  */
 class PasswordControllerTest extends PHPUnit
 {

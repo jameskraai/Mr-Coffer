@@ -1,19 +1,18 @@
-<?php namespace MrCoffer\Tests\AccountController;
+<?php
+
+namespace MrCoffer\Tests\AccountController;
 
 use Mockery;
 use Mockery\Mock;
-use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Account\StoreController;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
  * Class StoreControllerTest
  * Any tests concerning the Account\StoreController class may live here.
- *
- * @package MrCoffer\Tests\AccountController
  */
 class StoreControllerTest extends PHPUnit
 {
-
     /**
      * Auth Manager service that the controller requires in
      * order to fetch the currently authenticated User.
@@ -119,12 +118,12 @@ class StoreControllerTest extends PHPUnit
         $this->assertInstanceOf(StoreController::class, $controller);
     }
 
-
     /**
      * Test that an Account can be saved based on values from the Http Request and the Validator passes,
      * then insert the new Account into the database, then the User is redirected back to the dashboard.
      *
      * @covers MrCoffer\Http\Controllers\Account\StoreController::store
+     *
      * @return void
      */
     public function testAccountSavedValidatorPasses()

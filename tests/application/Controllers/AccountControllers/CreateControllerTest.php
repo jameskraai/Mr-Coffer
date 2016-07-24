@@ -1,16 +1,16 @@
-<?php namespace MrCoffer\Tests\AccountController;
+<?php
+
+namespace MrCoffer\Tests\AccountController;
 
 use Mockery;
 use Mockery\Mock;
-use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Account\CreateController;
+use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
  * Class CreateControllerTest
  * Test that the Controller will gather all of the required information and make a new view
  * to be sent to the User so they can create a new Account.
- *
- * @package MrCoffer\Tests\AccountController
  */
 class CreateControllerTest extends PHPUnit
 {
@@ -85,5 +85,4 @@ class CreateControllerTest extends PHPUnit
         // Assert that our create method returns true.
         $this->assertTrue($this->createController->create($this->viewFactory));
     }
-
 }

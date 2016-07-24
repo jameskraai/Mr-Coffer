@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AddStatusForeignKey extends Migration
 {
@@ -12,7 +12,7 @@ class AddStatusForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('transactions', function(Blueprint $table) {
+        Schema::table('transactions', function (Blueprint $table) {
             $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
@@ -24,7 +24,7 @@ class AddStatusForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('transactions', function(Blueprint $table) {
+        Schema::table('transactions', function (Blueprint $table) {
             $table->dropForeign(['status_id']);
         });
     }

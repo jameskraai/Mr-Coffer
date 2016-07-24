@@ -1,16 +1,16 @@
-<?php namespace MrCoffer\Transaction;
+<?php
+
+namespace MrCoffer\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * class Transaction
- *
- * @package MrCoffer\Transaction
  */
 class Transaction extends Model
 {
     /**
-     * Mass assignable properties
+     * Mass assignable properties.
      *
      * @var array
      */
@@ -20,7 +20,7 @@ class Transaction extends Model
         'category_id',
         'amount',
         'payee_id',
-        'status_id'
+        'status_id',
     ];
 
     /**

@@ -1,15 +1,15 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use MrCoffer\Account\Account;
+use MrCoffer\Account\Type as AccountType;
 use MrCoffer\Bank;
 use MrCoffer\User;
-use MrCoffer\Account\Type as AccountType;
-use MrCoffer\Account\Account;
-use Illuminate\Database\Seeder;
 
 class AccountsTableSeeder extends Seeder
 {
     /**
-     * Eloquent Model Instance
+     * Eloquent Model Instance.
      *
      * @var Account
      */
@@ -31,6 +31,7 @@ class AccountsTableSeeder extends Seeder
 
     /**
      * AccountsTableSeeder constructor.
+     *
      * @param Account     $account
      * @param AccountType $accountType
      * @param User        $user

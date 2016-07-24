@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePayeesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatePayeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('payees', function(Blueprint $table) {
+        Schema::create('payees', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');

@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use MrCoffer\Transaction\Status;
 
 /**
- * Class StatusesTableSeeder
+ * Class StatusesTableSeeder.
  */
 class StatusesTableSeeder extends Seeder
 {
