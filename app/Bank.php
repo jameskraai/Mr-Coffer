@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Bank
  * Represents a Bank, a User can assign many Accounts to a Bank instance.
- *
- * @package MrCoffer
  */
 class Bank extends Model
 {
