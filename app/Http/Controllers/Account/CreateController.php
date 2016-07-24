@@ -8,7 +8,6 @@ use MrCoffer\Account\Type as AccountType;
 use MrCoffer\Bank;
 use MrCoffer\Http\Controllers\Controller;
 
-
 /**
  * Class CreateController
  */
