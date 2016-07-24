@@ -2,12 +2,12 @@
 
 namespace MrCoffer\Http\Controllers\Auth;
 
-use MrCoffer\User;
-use Illuminate\Validation\Validator;
-use MrCoffer\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Validation\Factory as ValidatorFactory;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Validation\Validator;
+use MrCoffer\Http\Controllers\Controller;
+use MrCoffer\User;
 
 class AuthController extends Controller
 {
@@ -56,6 +56,7 @@ class AuthController extends Controller
      * Factory class to make new Validator instances.
      *
      * @see Validator
+     *
      * @var ValidatorFactory
      */
     protected $validatorFactory;
@@ -63,7 +64,7 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      *
-     * @param User $user
+     * @param User             $user
      * @param ValidatorFactory $validatorFactory
      */
     public function __construct(User $user, ValidatorFactory $validatorFactory)
@@ -77,13 +78,14 @@ class AuthController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
+     *
      * @return Validator
      */
     protected function validator(array $data)
     {
         return $this->validatorFactory->make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -91,7 +93,7 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return User
      */
     protected function create(array $data)
