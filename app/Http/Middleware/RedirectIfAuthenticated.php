@@ -55,7 +55,6 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, $guard = null)
     {
         if ($this->authManager->guard($guard)->check()) {
-
             return $this->redirect->route('dashboard');
         }
 

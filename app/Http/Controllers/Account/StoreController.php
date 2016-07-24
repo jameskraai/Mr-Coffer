@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use MrCoffer\Account\Account;
-use Illuminate\Auth\AuthManager;
+use Illuminate\Auth\AuthManager as Auth;
 use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector as Redirect;
 use Illuminate\Validation\Factory as ValidatorFactory;
@@ -21,7 +21,7 @@ class StoreController extends Controller
      * Authentication state - for example we can use it to get the
      * currently Authenticated User model.
      *
-     * @var AuthManager
+     * @var Auth
      */
     protected $auth;
 
@@ -51,12 +51,12 @@ class StoreController extends Controller
     /**
      * StoreController constructor.
      *
-     * @param AuthManager      $auth
+     * @param Auth            $auth
      * @param Request          $request
      * @param Redirect         $redirect
      * @param ValidatorFactory $validatorFactory
      */
-    public function __construct(AuthManager $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
+    public function __construct(Auth $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
     {
         $this->middleware('auth');
         $this->auth = $auth;

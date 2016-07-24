@@ -77,7 +77,6 @@ class ShowController extends Controller
         // Now that we have an Account we must ensure that the currently authenticated
         // User is allowed to access this Account.
         if ($this->gate->denies('canShow', $account)) {
-            
             // Route the User back to the dashboard if they are not
             // allowed to see the requested Account.
             return $this->redirect->route('dashboard');
