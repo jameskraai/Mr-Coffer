@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use MrCoffer\Account\Account;
-use Illuminate\Auth\AuthManager;
+use Illuminate\Auth\AuthManager as Auth;
 use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector as Redirect;
 use Illuminate\Validation\Factory as ValidatorFactory;
@@ -19,7 +19,7 @@ class PatchController extends Controller
      * Get and set information about the current
      * authentication state.
      *
-     * @var AuthManager
+     * @var Auth
      */
     protected $auth;
 
@@ -47,12 +47,12 @@ class PatchController extends Controller
     /**
      * PatchController constructor.
      *
-     * @param AuthManager      $auth
+     * @param Auth             $auth
      * @param Request          $request
      * @param Redirect         $redirect
      * @param ValidatorFactory $validatorFactory
      */
-    public function __construct(AuthManager $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
+    public function __construct(Auth $auth, Request $request, Redirect $redirect, ValidatorFactory $validatorFactory)
     {
         $this->middleware('auth');
         $this->auth = $auth;

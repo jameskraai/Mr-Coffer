@@ -4,9 +4,29 @@
     apt: name=php7.0-xdebug state=latest
     notify: restart php7-fpm
 
-  - name: Copy the Xdebug Configuration Template
+  - name: Enable Remote Connections
     become: yes
-    template:
-      src: xdebug.ini.j2
+    ini_file:
       dest: "{{ xdebug.ini_file }}"
+      section: xdebug
+      option: remote_enable
+      value: "{{ xdebug.remote_enabled }}"
+    notify: restart php7-fpm
 
+  - name: Configure Remote Connection Back
+    become: yes
+    ini_file:
+      dest: "{{ xdebug.ini_file }}"
+      section: xdebug
+      option: xdebug.remote_connection_back
+      value: "{{ xdebug.remote_connect_back }}"
+    notify: restart php7-fpm
+
+  - name: Configure Remote IDE Key
+    become: yes
+    ini_file:
+      dest: "{{ xdebug.ini_file }}"
+      section: xdebug
+      option: xdebug.remote_idekey
+      value: "{{ xdebug.ide_key }}"
+    notify: restart php7-fpm
