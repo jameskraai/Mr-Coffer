@@ -2,13 +2,11 @@
 
 namespace MrCoffer\Http\Controllers;
 
-use MrCoffer\User;
-use MrCoffer\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use MrCoffer\User;
 
 /**
  * Class Dashboard
- * @package MrCoffer\Http\Controllers
  */
 class DashboardController extends Controller
 {
