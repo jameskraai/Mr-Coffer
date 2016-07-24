@@ -1,14 +1,14 @@
 <?php
 
-use MrCoffer\Account\Account;
 use Illuminate\Database\Seeder;
+use MrCoffer\Account\Account;
+use MrCoffer\Transaction\Category;
 use MrCoffer\Transaction\Payee;
 use MrCoffer\Transaction\Status;
-use MrCoffer\Transaction\Category;
 use MrCoffer\Transaction\Transaction;
 
 /**
- * Class TransactionsTableSeeder
+ * Class TransactionsTableSeeder.
  */
 class TransactionsTableSeeder extends Seeder
 {

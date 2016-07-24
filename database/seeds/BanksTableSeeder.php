@@ -1,7 +1,7 @@
 <?php
 
-use MrCoffer\Bank;
 use Illuminate\Database\Seeder;
+use MrCoffer\Bank;
 
 class BanksTableSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class BanksTableSeeder extends Seeder
         $chase = new Bank();
         $chase->name = 'chase';
         $chase->save();
-        
+
         $wellsFargo = new Bank();
         $wellsFargo->name = 'wells fargo';
         $wellsFargo->save();

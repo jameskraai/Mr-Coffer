@@ -1,7 +1,7 @@
 <?php
 
-use MrCoffer\User;
 use Illuminate\Database\Seeder;
+use MrCoffer\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
 
     /**
      * UsersTableSeeder constructor.
+     *
      * @param User $user
      */
     public function __construct(User $user)

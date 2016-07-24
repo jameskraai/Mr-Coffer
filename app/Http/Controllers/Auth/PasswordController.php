@@ -2,8 +2,8 @@
 
 namespace MrCoffer\Http\Controllers\Auth;
 
-use MrCoffer\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use MrCoffer\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {
@@ -22,7 +22,6 @@ class PasswordController extends Controller
 
     /**
      * Create a new password controller instance.
-     *
      */
     public function __construct()
     {

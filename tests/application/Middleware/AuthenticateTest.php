@@ -1,4 +1,6 @@
-<?php namespace MrCoffer\Tests;
+<?php
+
+namespace MrCoffer\Tests;
 
 use Closure;
 use Mockery;
@@ -7,9 +9,7 @@ use MrCoffer\Http\Middleware\Authenticate;
 use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
- * Class AuthenticateTest
- * 
- * @package MrCoffer\Tests
+ * Class AuthenticateTest.
  */
 class AuthenticateTest extends PHPUnit
 {
@@ -69,8 +69,8 @@ class AuthenticateTest extends PHPUnit
         $this->response = Mockery::mock('Illuminate\Http\Response');
         $this->request = Mockery::mock('Illuminate\Http\Request');
         $this->redirect = Mockery::mock('Illuminate\Routing\Redirector');
-        $this->next = function() {
-           return true;
+        $this->next = function () {
+            return true;
         };
 
         $this->authenticate = new Authenticate($this->authManager, $this->response, $this->redirect);
@@ -106,7 +106,7 @@ class AuthenticateTest extends PHPUnit
         $this->response->shouldReceive('setContent');
         $this->response->shouldReceive('setStatusCode')->with(401);
         $this->response->shouldReceive('send')->andReturn(true);
-        
+
         $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
     }
 
@@ -120,14 +120,14 @@ class AuthenticateTest extends PHPUnit
     {
         // Assert that the requesting User is a guest.
         $this->authManager->shouldReceive('guard->guest')->andReturn(true);
-        
+
         // Indicate that this is not an AJAX nor JSON request.
         $this->request->shouldReceive('ajax')->andReturn(false);
         $this->request->shouldReceive('wantsJson')->andReturn(false);
-        
+
         // The User should be redirected to Login.
         $this->redirect->shouldReceive('guest')->with('login')->andReturn(true);
-        
+
         $this->assertTrue($this->authenticate->handle($this->request, $this->next, null));
     }
 

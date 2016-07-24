@@ -1,17 +1,17 @@
-<?php namespace MrCoffer\Tests;
+<?php
 
+namespace MrCoffer\Tests;
+
+use Faker\Factory as FakerFactory;
+use Faker\Generator as Faker;
 use Mockery;
 use Mockery\Mock;
-use ReflectionMethod;
-use Faker\Generator as Faker;
-use Faker\Factory as FakerFactory;
-use PHPUnit_Framework_TestCase as PHPUnit;
 use MrCoffer\Http\Controllers\Auth\AuthController;
+use PHPUnit_Framework_TestCase as PHPUnit;
+use ReflectionMethod;
 
 /**
  * Class AuthControllerTest
- *
- * @package MrCoffer\Tests
  */
 class AuthControllerTest extends PHPUnit
 {
@@ -42,7 +42,7 @@ class AuthControllerTest extends PHPUnit
      * @var Faker
      */
     protected $faker;
-    
+
     /**
      * Initialize our mock services and make the Controller for testing.
      *
@@ -80,8 +80,8 @@ class AuthControllerTest extends PHPUnit
 
         // Rules of the Validator;
         $validatorRules = [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ];
 
@@ -108,8 +108,8 @@ class AuthControllerTest extends PHPUnit
     {
         // Array of data from the Http Request with new User information.
         $requestData = [
-            'name' => $this->faker->name,
-            'email' => $this->faker->email,
+            'name'     => $this->faker->name,
+            'email'    => $this->faker->email,
             'password' => $this->faker->password(6, 20)
         ];
 

@@ -1,4 +1,6 @@
-<?php namespace MrCoffer;
+<?php
+
+namespace MrCoffer;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,6 +39,7 @@ class User extends Authenticatable
      * Check to see if this Account owns a related model.
      *
      * @param Model $related
+     *
      * @return bool
      */
     public function owns(Model $related)

@@ -1,12 +1,12 @@
-<?php namespace MrCoffer\Transaction;
+<?php
+
+namespace MrCoffer\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category
- * The 'category' that a Transaction mave have.
- *
- * @package MrCoffer\Transaction
+ * The 'category' that a Transaction may have.
  */
 class Category extends Model
 {
@@ -16,7 +16,7 @@ class Category extends Model
      * @var string
      */
     protected $table = 'categories';
-    
+
     /**
      * Mass assignable attributes.
      *

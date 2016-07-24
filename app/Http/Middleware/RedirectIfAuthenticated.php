@@ -3,16 +3,14 @@
 namespace MrCoffer\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector as Redirect;
 
 /**
  * Class RedirectIfAuthenticated
  * Responsible for checking if our User is authenticated and if so
  * then routes them to the dashboard route.
- *
- * @package MrCoffer\Http\Middleware
  */
 class RedirectIfAuthenticated
 {
@@ -47,9 +45,10 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  Request      $request
-     * @param  Closure      $next
-     * @param  string|null  $guard
+     * @param Request      $request
+     * @param Closure      $next
+     * @param string|null  $guard
+     *
      * @return mixed
      */
     public function handle(Request $request, Closure $next, $guard = null)

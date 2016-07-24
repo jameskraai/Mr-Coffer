@@ -1,13 +1,12 @@
 <?php
 
-use MrCoffer\Account\Type;
 use Illuminate\Database\Seeder;
-
+use MrCoffer\Account\Type;
 
 class AccountTypesTableSeeder extends Seeder
 {
     /**
-     * Account Type Model
+     * Account Type Model.
      *
      * @var Type
      */

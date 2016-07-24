@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Status
  * Represents the Status of a Transaction.
- *
- * @package MrCoffer\Transaction
  */
 class Status extends Model
 {
@@ -20,7 +18,7 @@ class Status extends Model
     protected $table = 'statuses';
 
     /**
-     * Mass assignable attributes
+     * Mass assignable attributes.
      *
      * @var array
      */

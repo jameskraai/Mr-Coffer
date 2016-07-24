@@ -13,36 +13,36 @@
 
 $factory->define(MrCoffer\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
+        'name'           => $faker->name,
+        'email'          => $faker->safeEmail,
+        'password'       => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
 });
 
-$factory->define(MrCoffer\Bank::class, function(Faker\Generator $faker) {
+$factory->define(MrCoffer\Bank::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
     ];
 });
 
-$factory->define(MrCoffer\Account\Type::class, function(Faker\Generator $faker) {
+$factory->define(MrCoffer\Account\Type::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'name' => $faker->name,
     ];
 });
 
-$factory->define(\MrCoffer\Account\Account::class, function(Faker\Generator $faker) {
+$factory->define(\MrCoffer\Account\Account::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->title,
-        'user_id' => function() {
+        'name'    => $faker->title,
+        'user_id' => function () {
             return factory(MrCoffer\User::class)->create()->id;
         },
-        'number' => $faker->numberBetween(100, 1000),
-        'type_id' => function() {
+        'number'  => $faker->numberBetween(100, 1000),
+        'type_id' => function () {
             return factory(MrCoffer\Account\Type::class)->create()->id;
         },
-        'bank_id' => function() {
+        'bank_id'  => function () {
             return factory(MrCoffer\Bank::class)->create()->id;
         },
     ];

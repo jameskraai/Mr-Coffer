@@ -1,19 +1,19 @@
-<?php namespace MrCoffer\Http\Controllers\Account;
+<?php
+
+namespace MrCoffer\Http\Controllers\Account;
 
 use MrCoffer\Account\Account;
+use Illuminate\Contracts\Auth\Access\Gate;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use MrCoffer\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Routing\Redirector as Redirect;
-use Illuminate\Contracts\View\Factory as ViewFactory;
+use MrCoffer\Http\Controllers\Controller;
 
 /**
  * Class AccountShowCtrl
  * This controller is singularly responsible for displaying a single
  * Account that the current User is authorized to view.
- *
- * @package MrCoffer\Http\Controllers\Account
  */
 class ShowController extends Controller
 {
@@ -67,6 +67,7 @@ class ShowController extends Controller
      * Account. If so then return the view of the Account.
      *
      * @param string $id Unique identifier of the Account we would like to view.
+     *
      * @return View|RedirectResponse
      */
     public function show($id)
