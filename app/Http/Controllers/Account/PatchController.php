@@ -1,17 +1,18 @@
-<?php namespace MrCoffer\Http\Controllers\Account;
+<?php
 
-use Illuminate\Http\Request;
-use MrCoffer\Account\Account;
+namespace MrCoffer\Http\Controllers\Account;
+
 use Illuminate\Auth\AuthManager as Auth;
-use MrCoffer\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector as Redirect;
 use Illuminate\Validation\Factory as ValidatorFactory;
+use MrCoffer\Account\Account;
+use MrCoffer\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class PatchController
  * Responsible for handling the updating of an existing Account.
- *
- * @package MrCoffer\Http\Controllers\Account
  */
 class PatchController extends Controller
 {
@@ -61,8 +62,6 @@ class PatchController extends Controller
         $this->validatorFactory = $validatorFactory;
     }
 
-
-
     /**
      * Validates the incoming request from the edit Account form, then checks for which values have
      * changed (if any) then if something has changed perform a database update of the Account
@@ -70,11 +69,12 @@ class PatchController extends Controller
      *
      * @param int     $id      The ID of the Account to be updated.
      * @param Account $account Account model to update the database with.
-     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @return RedirectResponse
      */
     public function patch($id, Account $account)
     {
-        /** @var \Illuminate\Database\Eloquent\Model  $account */
+        /** @var \Illuminate\Database\Eloquent\Model $account */
         $account = $account->query()->findOrFail($id);
 
         // Make a new Validator and pass it the required data.
