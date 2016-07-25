@@ -1,38 +1,54 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-Route::get('/', 'DashboardController@index');
-Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+use Illuminate\Routing\Router;
 
-// Authentication routes...
-Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::post('/login', 'Auth\AuthController@postLogin');
-Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+/**
+ * Declare all Http Routes within this callback function. This function will be invoked with
+ * a Router instance injected into it at the RouteServiceProvider class.
+ *
+ * @param Router $route
+ *
+ * @see \MrCoffer\Providers\RouteServiceProvider
+ * @return void
+ */
+return function (Router $route) {
 
-// Registration routes...
-Route::get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-Route::post('/register', 'Auth\AuthController@Register');
+    /**
+     * Dashboard
+     * When the User is logged in they will be routed to the dashboard. This is where
+     * they can manage all of their Transactions, Accounts, etc.
+     */
+    $route->get('/', 'DashboardController@index');
+    $route->get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
-// Account Store
-Route::post('/account/create', ['as' => 'account.store', 'uses' => 'Account\StoreController@store']);
+    /**
+     * Authentication
+     * The User should be able to visit a page with a login form, submit a login request
+     * to said form and also visit a route to log out of the app.
+     */
+    $route->get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+    $route->post('/login', 'Auth\AuthController@postLogin');
+    $route->get('/logout', ['as' => 'logout', 'uses', 'Auth\AuthController@getLogout']);
 
-// Account Create
-Route::get('/account/create', ['as' => 'account.create', 'uses' => 'Account\CreateController@create']);
+    /**
+     * Provide a route to a registration form as well as
+     * handling for new User registration.
+     */
+    $route->get('/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
+    $route->post('/register', 'Auth\AuthController@Register');
 
-// Account Edit
-Route::get('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\EditController@edit']);
+    /**
+     * Account
+     */
+    // The Account Create page.
+    $route->get('/account/create', ['as' => 'account.create', 'uses' => 'Account\CreateController@create']);
 
-// Account Update
-Route::patch('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\PatchController@patch']);
+    // Submit a request to make a new Account.
+    $route->post('/account/create', ['as' => 'account.store', 'uses' => 'Account\StoreController@store']);
 
-// Account Show
-Route::get('/account/{id}', ['as' => 'account.show', 'uses' => 'Account\ShowController@show']);
+    // Submit an update request to a single Account.
+    $route->patch('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\PatchController@patch']);
+
+    // Submit a request to view a single Account.
+    $route->get('/account/{id}', ['as' => 'account.show', 'uses' => 'Account\ShowController@show']);
+};
