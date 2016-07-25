@@ -46,6 +46,9 @@ return function (Router $route) {
     // Submit a request to make a new Account.
     $route->post('/account/create', ['as' => 'account.store', 'uses' => 'Account\StoreController@store']);
 
+    // Show a page to Edit a single Account.
+    $route->get('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\EditController@edit']);
+
     // Submit an update request to a single Account.
     $route->patch('/account/{id}/edit', ['as' => 'account.edit', 'uses' => 'Account\PatchController@patch']);
 
