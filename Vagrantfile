@@ -14,10 +14,18 @@ Vagrant.configure(2) do |config|
         vb.name = hostname
         vb.memory = memory
     end
-    
+
     # Run the Ansible 'provision' playbook upon provisioning
     # this Vagrant instance.
     config.vm.provision :ansible do |ansible|
         ansible.playbook = "build/ansible/provision.yaml"
     end
+
+    # Restart Nginx everytime this environment is booted. Else
+    # when the provision flag is not set the application will
+    # white screen as Nginx is not running.
+    config.vm.provision :shell, run: "always" do |shell|
+        shell.inline = "sudo service nginx restart"
+    end
+
 end

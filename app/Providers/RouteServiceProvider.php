@@ -55,10 +55,20 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes(Router $router)
     {
+        /**
+         * Callback function for the group method on the Router
+         * where we mass assign Http Routes for our app.
+         *
+         * @param Router $route
+         *
+         * @return void
+         */
+        $routeGroupCallback = function ($route) {
+            require app_path('Http/routes.php');
+        };
+
         $router->group([
             'namespace' => $this->namespace, 'middleware' => 'web',
-        ], function ($router) {
-            require app_path('Http/routes.php');
-        });
+        ], $routeGroupCallback);
     }
 }
