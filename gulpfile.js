@@ -16,5 +16,5 @@ elixir(function(mix) {
     // Copy Normalize.css from NPM for use with Sass.
     mix.copy('node_modules/normalize-css/normalize.css', 'resources/assets/sass/normalize.css');
 
-    mix.sass(['normalize.css', 'app.scss'], 'public/app.css');
+    mix.sass(['normalize.css', '*.scss'], 'public/app.css');
 });
