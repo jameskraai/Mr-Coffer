@@ -1,2 +1,40 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Global Styles
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f2f2f2;
+}
+
+main {
+  padding: 0 1em;
+  max-width: 960px;
+}
+
+// Global Form Styles
+label {
+  display: block;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  display: block;
+  padding: 0;
+}
+
+// Login Form Styles
+#login {
+  background-color: white;
+  margin: 1em 0;
+  padding: .5em;
+  box-shadow: 0 2px 3px rgba(168,168,168,.3);
+}
+
+#login h1 {
+  text-align: center;
+}
+
+#login label {
+  margin: .5em 0;
+}
