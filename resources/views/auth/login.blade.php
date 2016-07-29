@@ -12,11 +12,12 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
 
-        <label for="remember-me">Remember Me
-        <input type="checkbox" name="remember" id="remember-me">
+        <label for="remember-me">
+            <input type="checkbox" name="remember" id="remember-me">
+            Stay signed in
         </label>
 
-        <button type="submit">Login</button>
-        <a href="{!! route('register') !!}">Register</a>
+        <input type="submit" value="Sign In" />
+        <a href="{!! route('register') !!}" id="register">Register</a>
     </form>
 @endsection

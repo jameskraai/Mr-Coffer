@@ -1,0 +1,58 @@
+#login {
+  display: block;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+#login h1 {
+  text-align: center;
+}
+
+#login label,
+#login input[type="email"],
+#login input[type="password"] {
+  display: block;
+}
+
+#login input[type="email"],
+#login input[type="password"] {
+  border: .5px solid #333;
+  width: 100%;
+  font-size: 1.125em;
+  line-height: 2;
+  padding: .2em 0 .2em .2em;
+}
+
+// Add some vertical spacing.
+#login label {
+  margin: 1em 0;
+}
+
+#login input[type="submit"] {
+  display: block;
+  color: white;
+  font-size: 1.125em;
+  background-color: #4A90E2;
+  border: none;
+  padding: .5em 0;
+  width: 100%;
+  border-radius: .1em;
+
+  &:hover {
+    background-color: #4280C8;
+  }
+}
+
+#login #register {
+  display: block;
+  color: #4a90e2;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.125em;
+  margin: 1em 0;
+
+  &:hover {
+    color: #4280C8;
+  }
+}
+

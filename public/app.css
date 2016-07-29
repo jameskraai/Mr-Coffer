@@ -336,32 +336,67 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #f2f2f2; }
+  background-color: #FCFCFC;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px; }
 
-main {
-  padding: 0 1em;
-  max-width: 960px; }
+h1 {
+  font-weight: 300;
+  font-size: 2.625em; }
 
 label {
-  display: block; }
+  font-size: 1em;
+  color: #818181; }
 
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  display: block;
-  padding: 0; }
+main {
+  max-width: 960px;
+  padding: 0 2em;
+  margin: 0 auto; }
 
 #login {
-  background-color: white;
-  margin: 1em 0;
-  padding: .5em;
-  box-shadow: 0 2px 3px rgba(168, 168, 168, 0.3); }
+  display: block;
+  max-width: 640px;
+  margin: 0 auto; }
 
 #login h1 {
   text-align: center; }
 
+#login label,
+#login input[type="email"],
+#login input[type="password"] {
+  display: block; }
+
+#login input[type="email"],
+#login input[type="password"] {
+  border: .5px solid #333;
+  width: 100%;
+  font-size: 1.125em;
+  line-height: 2;
+  padding: .2em 0 .2em .2em; }
+
 #login label {
-  margin: .5em 0; }
+  margin: 1em 0; }
+
+#login input[type="submit"] {
+  display: block;
+  color: white;
+  font-size: 1.125em;
+  background-color: #4A90E2;
+  border: none;
+  padding: .5em 0;
+  width: 100%;
+  border-radius: .1em; }
+  #login input[type="submit"]:hover {
+    background-color: #4280C8; }
+
+#login #register {
+  display: block;
+  color: #4a90e2;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.125em;
+  margin: 1em 0; }
+  #login #register:hover {
+    color: #4280C8; }
 
 /*# sourceMappingURL=app.css.map */
