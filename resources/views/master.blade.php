@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="app.css">
     </head>
     <body>
         <header>
