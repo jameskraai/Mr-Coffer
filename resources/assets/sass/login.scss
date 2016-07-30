@@ -1,3 +1,5 @@
+@import 'config.scss';
+
 #login {
   display: block;
   max-width: 640px;
@@ -18,7 +20,7 @@
 #login input[type="password"] {
   border: .5px solid #333;
   width: 100%;
-  font-size: 1.125em;
+  font-size: map-get($font-sizes, 'p');
   line-height: 2;
   padding: .2em 0 .2em .2em;
 }
@@ -31,28 +33,28 @@
 #login input[type="submit"] {
   display: block;
   color: white;
-  font-size: 1.125em;
-  background-color: #4A90E2;
+  font-size: map-get($font-sizes, 'p');
+  background-color: map-get($colors, 'accent');
   border: none;
   padding: .5em 0;
   width: 100%;
   border-radius: .1em;
 
   &:hover {
-    background-color: #4280C8;
+    background-color: darken(map-get($colors, 'accent'), 10%);
   }
 }
 
 #login #register {
   display: block;
-  color: #4a90e2;
+  color: map-get($colors, 'accent');
   text-decoration: none;
   text-align: center;
-  font-size: 1.125em;
+  font-size: map-get($font-sizes, 'p');
   margin: 1em 0;
 
   &:hover {
-    color: #4280C8;
+    color: darken(map-get($colors, 'accent'), 10%);
   }
 }
 

@@ -12,7 +12,7 @@
             @yield('content')
         </main>
         <footer>
-            <small>Mr Coffer</small>
+            {{-- Footer Content --}}
         </footer>
     </body>
 </html>

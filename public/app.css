@@ -335,8 +335,67 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ * All configuration for our Sass files will live here. Such as
+ * variables, framework configuration, etc.
+ */
+/*
+ * Map of the available font sizes.
+ *
+ * @type Map
+ * @prop {String} key - Size name
+ * @prop {String?} value - Size of font.
+ */
+/*
+ * Map of the available font weights
+ * for the Open Sans font.
+ *
+ * @type Map
+ * @prop {String} key - Name of the weight
+ * @prop {Number} value - Font weight
+ */
+/*
+ * Map of the colors our app uses.
+ *
+ * @type Map
+ * @prop {String} key - Name of the color
+ * @prop {String} value - Hex of the color
+ */
+
+/*
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ * All configuration for our Sass files will live here. Such as
+ * variables, framework configuration, etc.
+ */
+/*
+ * Map of the available font sizes.
+ *
+ * @type Map
+ * @prop {String} key - Size name
+ * @prop {String?} value - Size of font.
+ */
+/*
+ * Map of the available font weights
+ * for the Open Sans font.
+ *
+ * @type Map
+ * @prop {String} key - Name of the weight
+ * @prop {Number} value - Font weight
+ */
+/*
+ * Map of the colors our app uses.
+ *
+ * @type Map
+ * @prop {String} key - Name of the color
+ * @prop {String} value - Hex of the color
+ */
 body {
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
   font-family: "Open Sans", sans-serif;
   font-size: 16px; }
 
@@ -353,6 +412,35 @@ main {
   padding: 0 2em;
   margin: 0 auto; }
 
+/*
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ * All configuration for our Sass files will live here. Such as
+ * variables, framework configuration, etc.
+ */
+/*
+ * Map of the available font sizes.
+ *
+ * @type Map
+ * @prop {String} key - Size name
+ * @prop {String?} value - Size of font.
+ */
+/*
+ * Map of the available font weights
+ * for the Open Sans font.
+ *
+ * @type Map
+ * @prop {String} key - Name of the weight
+ * @prop {Number} value - Font weight
+ */
+/*
+ * Map of the colors our app uses.
+ *
+ * @type Map
+ * @prop {String} key - Name of the color
+ * @prop {String} value - Hex of the color
+ */
 #login {
   display: block;
   max-width: 640px;
@@ -387,16 +475,16 @@ main {
   width: 100%;
   border-radius: .1em; }
   #login input[type="submit"]:hover {
-    background-color: #4280C8; }
+    background-color: #2275d7; }
 
 #login #register {
   display: block;
-  color: #4a90e2;
+  color: #4A90E2;
   text-decoration: none;
   text-align: center;
   font-size: 1.125em;
   margin: 1em 0; }
   #login #register:hover {
-    color: #4280C8; }
+    color: #2275d7; }
 
 /*# sourceMappingURL=app.css.map */
