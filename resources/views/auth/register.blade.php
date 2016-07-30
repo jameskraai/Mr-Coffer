@@ -1,7 +1,19 @@
-<!-- resources/views/auth/register.blade.php -->
+{{--
+| Registration Form
+| This view is the User registration form.
+|
+--}}
+{{-- resources/views/auth/register.blade.php --}}
+@extends('auth.main')
 
-<form method="POST" action="/register">
+{{-- Set where this form should route to. --}}
+@section('form_action')
+    {!! url('/register') !!}
+@endsection
+
+@section('authentication_form')
     {!! csrf_field() !!}
+    <h1>Pocket Advisor</h1>
 
     <label for="name">Name</label>
     <input type="text" name="name" value="{{ old('name') }}" id="name">
@@ -15,6 +27,6 @@
     <label for="password_confirmation">Confirm Password</label>
     <input type="password" name="password_confirmation" id="password_confirmation">
 
-    <button type="submit">Register</button>
-    <a href="{!! route('login') !!}">Back</a>
-</form>
+    <input type="submit" value="Register" />
+    <a href="{!! route('login') !!}">Cancel</a>
+@endsection
