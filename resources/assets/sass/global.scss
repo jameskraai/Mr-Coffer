@@ -1,0 +1,23 @@
+@import 'config';
+
+body {
+  background-color: map-get($colors, 'background');
+  font-family: $font-family;
+  font-size: map-get($font-sizes, 'base');
+}
+
+h1 {
+  font-weight: map-get($font-weights, 'light');
+  font-size: map-get($font-sizes, 'h1');
+}
+
+label {
+  font-size: 1em;
+  color: map-get($colors, 'grey');
+}
+
+main {
+  max-width: 960px;
+  padding: 0 2em;
+  margin: 0 auto;
+}
