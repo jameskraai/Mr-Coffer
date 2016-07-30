@@ -364,6 +364,84 @@ table {
  * @prop {String} key - Name of the color
  * @prop {String} value - Hex of the color
  */
+#authentication {
+  display: block;
+  max-width: 640px;
+  margin: 0 auto; }
+
+#authentication h1 {
+  text-align: center; }
+
+#authentication label,
+#authentication input[type="text"],
+#authentication input[type="email"],
+#authentication input[type="password"] {
+  display: block; }
+
+#authentication input[type="text"],
+#authentication input[type="email"],
+#authentication input[type="password"] {
+  font-size: 1.125em;
+  line-height: 2;
+  border: 0.5px solid #333;
+  width: 100%;
+  padding: .2em 0 .2em .2em; }
+
+#authentication label {
+  margin: 1em 0; }
+
+#authentication input[type="submit"] {
+  color: white;
+  font-size: 1.125em;
+  display: block;
+  width: 100%;
+  background-color: #4A90E2;
+  border-radius: .1em;
+  border: none;
+  margin-top: 1em;
+  padding: .5em 0; }
+  #authentication input[type="submit"]:hover {
+    background-color: #2275d7; }
+
+#authentication a {
+  color: #4A90E2;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.125em;
+  display: block;
+  margin: 1em 0; }
+  #authentication a:hover {
+    color: #2275d7; }
+
+/*
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ * All configuration for our Sass files will live here. Such as
+ * variables, framework configuration, etc.
+ */
+/*
+ * Map of the available font sizes.
+ *
+ * @type Map
+ * @prop {String} key - Size name
+ * @prop {String?} value - Size of font.
+ */
+/*
+ * Map of the available font weights
+ * for the Open Sans font.
+ *
+ * @type Map
+ * @prop {String} key - Name of the weight
+ * @prop {Number} value - Font weight
+ */
+/*
+ * Map of the colors our app uses.
+ *
+ * @type Map
+ * @prop {String} key - Name of the color
+ * @prop {String} value - Hex of the color
+ */
 
 /*
  * ------------------------------------------------------------
@@ -411,80 +489,5 @@ main {
   max-width: 960px;
   padding: 0 2em;
   margin: 0 auto; }
-
-/*
- * ------------------------------------------------------------
- * Configuration
- * ------------------------------------------------------------
- * All configuration for our Sass files will live here. Such as
- * variables, framework configuration, etc.
- */
-/*
- * Map of the available font sizes.
- *
- * @type Map
- * @prop {String} key - Size name
- * @prop {String?} value - Size of font.
- */
-/*
- * Map of the available font weights
- * for the Open Sans font.
- *
- * @type Map
- * @prop {String} key - Name of the weight
- * @prop {Number} value - Font weight
- */
-/*
- * Map of the colors our app uses.
- *
- * @type Map
- * @prop {String} key - Name of the color
- * @prop {String} value - Hex of the color
- */
-#login {
-  display: block;
-  max-width: 640px;
-  margin: 0 auto; }
-
-#login h1 {
-  text-align: center; }
-
-#login label,
-#login input[type="email"],
-#login input[type="password"] {
-  display: block; }
-
-#login input[type="email"],
-#login input[type="password"] {
-  font-size: 1.125em;
-  line-height: 2;
-  border: 0.5px solid #333;
-  width: 100%;
-  padding: .2em 0 .2em .2em; }
-
-#login label {
-  margin: 1em 0; }
-
-#login input[type="submit"] {
-  color: white;
-  font-size: 1.125em;
-  display: block;
-  width: 100%;
-  background-color: #4A90E2;
-  border-radius: .1em;
-  border: none;
-  padding: .5em 0; }
-  #login input[type="submit"]:hover {
-    background-color: #2275d7; }
-
-#login #register {
-  color: #4A90E2;
-  text-decoration: none;
-  text-align: center;
-  font-size: 1.125em;
-  display: block;
-  margin: 1em 0; }
-  #login #register:hover {
-    color: #2275d7; }
 
 /*# sourceMappingURL=app.css.map */

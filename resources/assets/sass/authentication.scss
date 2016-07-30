@@ -2,26 +2,28 @@
 
 // The form should be full width, however the max width of the <main> element
 // is a bit wide for our form therefore we will set our own.
-#login {
+#authentication {
   display: block;
   max-width: 640px;
   margin: 0 auto;
 }
 
 // Let's center up the page heading on the form.
-#login h1 {
+#authentication h1 {
   text-align: center;
 }
 
 // Display as block so that these elements are full width.
-#login label,
-#login input[type="email"],
-#login input[type="password"] {
+#authentication label,
+#authentication input[type="text"],
+#authentication input[type="email"],
+#authentication input[type="password"] {
   display: block;
 }
 
-#login input[type="email"],
-#login input[type="password"] {
+#authentication input[type="text"],
+#authentication input[type="email"],
+#authentication input[type="password"] {
   font-size: map-get($font-sizes, 'p');
   line-height: 2;
 
@@ -39,12 +41,12 @@
 }
 
 // Add some vertical spacing.
-#login label {
+#authentication label {
   margin: 1em 0;
 }
 
 // The 'Sign In' button.
-#login input[type="submit"] {
+#authentication input[type="submit"] {
   color: white;
   font-size: map-get($font-sizes, 'p');
 
@@ -56,6 +58,9 @@
   border-radius: .1em;
   border: none;
 
+  // Add some top margin to separate from the fields above.
+  margin-top: 1em;
+
   // Add some vertical padding to give the text some room.
   padding: .5em 0;
 
@@ -66,7 +71,7 @@
 }
 
 // Anchor tag button beneath the sign in button.
-#login #register {
+#authentication a {
   color: map-get($colors, 'accent');
   text-decoration: none;
   text-align: center;
