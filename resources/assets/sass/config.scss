@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ * All configuration for our Sass files will live here. Such as
+ * variables, framework configuration, etc.
+ */
+
+// ------------------------------
+// Typography
+// ------------------------------
+
+$font-family: 'Open Sans', sans-serif;
+
+/*
+ * Map of the available font sizes.
+ *
+ * @type Map
+ * @prop {String} key - Size name
+ * @prop {String?} value - Size of font.
+ */
+$font-sizes: (
+        'h1': 2.625em,
+        'h2': 2em,
+        'h3': 1.5em,
+        'p': 1.125em,
+        'base': 16px,
+);
+
+/*
+ * Map of the available font weights
+ * for the Open Sans font.
+ *
+ * @type Map
+ * @prop {String} key - Name of the weight
+ * @prop {Number} value - Font weight
+ */
+$font-weights: (
+        'light': 300,
+        'normal': 400,
+);
+
+// ------------------------------
+// Colors
+// ------------------------------
+
+/*
+ * Map of the colors our app uses.
+ *
+ * @type Map
+ * @prop {String} key - Name of the color
+ * @prop {String} value - Hex of the color
+ */
+$colors: (
+        'foreground': #333,
+        'background': #fcfcfc,
+        'accent': #4A90E2,
+        'grey': #818181,
+);

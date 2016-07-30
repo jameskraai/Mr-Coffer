@@ -1,0 +1,85 @@
+@import 'config.scss';
+
+// The form should be full width, however the max width of the <main> element
+// is a bit wide for our form therefore we will set our own.
+#login {
+  display: block;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+// Let's center up the page heading on the form.
+#login h1 {
+  text-align: center;
+}
+
+// Display as block so that these elements are full width.
+#login label,
+#login input[type="email"],
+#login input[type="password"] {
+  display: block;
+}
+
+#login input[type="email"],
+#login input[type="password"] {
+  font-size: map-get($font-sizes, 'p');
+  line-height: 2;
+
+  // Override the default border to match ours with
+  // our global foreground color.
+  border: .5px solid map-get($colors, 'foreground');
+
+  // Width to 100 is required to get these input fields
+  // to take up the full width of their container.
+  width: 100%;
+
+  // Add some padding to all sides but the left. I found that adding padding
+  // to the right pushes the input field out of it's container.
+  padding: .2em 0 .2em .2em;
+}
+
+// Add some vertical spacing.
+#login label {
+  margin: 1em 0;
+}
+
+// The 'Sign In' button.
+#login input[type="submit"] {
+  color: white;
+  font-size: map-get($font-sizes, 'p');
+
+  // Display full width.
+  display: block;
+  width: 100%;
+
+  background-color: map-get($colors, 'accent');
+  border-radius: .1em;
+  border: none;
+
+  // Add some vertical padding to give the text some room.
+  padding: .5em 0;
+
+  // On hover simply darken the background color.
+  &:hover {
+    background-color: darken(map-get($colors, 'accent'), 10%);
+  }
+}
+
+// Anchor tag button beneath the sign in button.
+#login #register {
+  color: map-get($colors, 'accent');
+  text-decoration: none;
+  text-align: center;
+  font-size: map-get($font-sizes, 'p');
+
+  // Display as full width.
+  display: block;
+  // Add some vertical spacing.
+  margin: 1em 0;
+
+  // On hover darken the text color as it has no background color.
+  &:hover {
+    color: darken(map-get($colors, 'accent'), 10%);
+  }
+}
+
