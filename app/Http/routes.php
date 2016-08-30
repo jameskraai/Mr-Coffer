@@ -27,7 +27,7 @@ $route->get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@i
  */
 $route->get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
 $route->post('/login', 'Auth\AuthController@postLogin');
-$route->get('/logout', ['as' => 'logout', 'uses', 'Auth\AuthController@getLogout']);
+$route->get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 /**
  * Provide a route to a registration form as well as
