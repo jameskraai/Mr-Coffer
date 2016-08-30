@@ -6,7 +6,7 @@
     </head>
     <body>
         <header>
-            <a href="{!! route('logout') !!}">Logout</a>
+            <a id="logout" href="{!! route('logout') !!}">Logout</a>
         </header>
         <main>
             @yield('content')

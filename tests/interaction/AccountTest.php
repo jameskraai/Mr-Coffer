@@ -2,11 +2,11 @@
 
 namespace MrCoffer\Tests;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use MrCoffer\Account\Account;
-use MrCoffer\Account\Type as AccountType;
 use MrCoffer\Bank;
 use MrCoffer\User;
+use MrCoffer\Account\Account;
+use MrCoffer\Account\Type as AccountType;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Class AccountTest
@@ -49,7 +49,7 @@ class AccountTest extends TestCase
      * Test that the the new Account.create view is ble to be used
      * to successfully create a new Account instance.
      *
-     * @covers MrCoffer\Http\Controllers\Account\StoreController::store
+     * @covers \MrCoffer\Http\Controllers\Account\StoreController::store
      *
      * @return void
      */
