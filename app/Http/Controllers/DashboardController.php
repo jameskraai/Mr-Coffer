@@ -2,9 +2,6 @@
 
 namespace MrCoffer\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use MrCoffer\User;
-
 /**
  * Class Dashboard
  */
@@ -12,14 +9,18 @@ class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('wantJson');
     }
 
+    /**
+     * Return a string.
+     *
+     * @return string
+     */
     public function index()
     {
-        /* @var $user User */
-        $user = Auth::user();
+        $json = json_encode(['You have arrived.']);
 
-        return view('dashboard.main', ['user' => $user]);
+        return $json;
     }
 }
