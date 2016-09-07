@@ -1,6 +1,6 @@
 # Mr Coffer
 [![StyleCI](https://styleci.io/repos/56951256/shield?style=flat)](https://styleci.io/repos/56951256)
-[ ![Codeship Status for jameskraai/mrcoffer](https://codeship.com/projects/c1e63f90-207c-0134-8754-665cbf9dded3/status?branch=master)](https://codeship.com/projects/160703)
+[ ![Codeship Status for kraaitek/api-component](https://codeship.com/projects/c1b23430-56ce-0134-e228-02458a2e1ff4/status?branch=master)](https://codeship.com/projects/172409)
 
 I could not find any personal finance software that I liked so I started making my own.
 
