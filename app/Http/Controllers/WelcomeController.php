@@ -5,7 +5,7 @@ namespace MrCoffer\Http\Controllers;
 /**
  * Class Dashboard
  */
-class DashboardController extends Controller
+class WelcomeController extends Controller
 {
     public function __construct()
     {
