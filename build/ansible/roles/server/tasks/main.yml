@@ -36,3 +36,6 @@
   - name: Add www-data to vagrant group
     become: yes
     user: name=www-data groups=vagrant append=yes
+
+  - name: Add Bash Aliases
+    template: src=bash_aliases.j2 dest={{ aliases_path }}
