@@ -30,3 +30,10 @@
       option: xdebug.remote_idekey
       value: "{{ xdebug.ide_key }}"
     notify: restart php7-fpm
+
+  - name: Disable for the CLI
+    become: yes
+    file: path=/etc/php/7.0/cli/conf.d/20-xdebug.ini state=absent
+    notify: restart php7-fpm
+
+
