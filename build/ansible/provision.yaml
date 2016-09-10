@@ -13,5 +13,4 @@
       - mysql
       - sqlite
       - nginx
-      - nodejs
       - MrCoffer
