@@ -6,9 +6,6 @@
       no_dev: no
       working_dir: "{{ project.root }}"
 
-  - name: Install Node Packages
-    npm: path={{ project.root }}
-
   - name: Create Application MySQL Database
     become: yes
     mysql_db: name={{ project.name }} state=present
