@@ -2,7 +2,6 @@
 
 namespace MrCoffer\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Validation\Factory as ValidatorFactory;
 use Illuminate\Validation\Validator;
@@ -22,7 +21,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -69,7 +68,6 @@ class AuthController extends Controller
      */
     public function __construct(User $user, ValidatorFactory $validatorFactory)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'getLogout']]);
         $this->user = $user;
         $this->validatorFactory = $validatorFactory;
     }

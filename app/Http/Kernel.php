@@ -2,13 +2,13 @@
 
 namespace MrCoffer\Http;
 
+use Illuminate\Auth\Middleware\Authorize;
 use MrCoffer\Http\Middleware\Authenticate;
 use MrCoffer\Http\Middleware\EncryptCookies;
 use MrCoffer\Http\Middleware\VerifyCsrfToken;
 use MrCoffer\Http\Middleware\VerifyWantsJson;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Foundation\Http\Middleware\Authorize;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use MrCoffer\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
