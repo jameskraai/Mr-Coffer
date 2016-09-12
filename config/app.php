@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
+        \Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Application Service Providers...
