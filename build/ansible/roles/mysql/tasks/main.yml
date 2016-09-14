@@ -6,13 +6,7 @@
     - mysql-server
     - python-mysqldb
 
-
-- name: Setup MySQL User
+- name: Enable Remote Connections
   become: yes
-  mysql_user:
-    name: "vagrant"
-    password: "vagrant"
-    priv: "*.*:ALL"
-    host: "%"
-    state: present
+  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf
   notify: restart mysql

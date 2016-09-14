@@ -9,6 +9,17 @@
   - name: Create Application MySQL Database
     become: yes
     mysql_db: name={{ project.name }} state=present
+    notify: restart mysql
+
+  - name: Setup MySQL User
+    become: yes
+    mysql_user:
+      name: "vagrant"
+      password: "vagrant"
+      priv: "{{ project.name }}.*:ALL"
+      host: "%"
+      state: present
+    notify: restart mysql
 
   - name: Refresh and Seed the Database
     command: php artisan migrate:refresh --seed
@@ -30,5 +41,3 @@
       state: link
       force: yes
     notify: restart nginx
-
-
