@@ -41,3 +41,6 @@
       state: link
       force: yes
     notify: restart nginx
+
+  - name: Create Sqlite Database
+    file: path={{ project.root }}/storage/database.sqlite state=touch

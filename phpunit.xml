@@ -27,9 +27,10 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DATABASE_CONNECTION" value="sqlite"/>
     </php>
     <logging>
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
