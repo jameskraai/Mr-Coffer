@@ -1,4 +1,5 @@
 storage/*.key
+*.sqlite
 /vendor
 /node_modules
 /public/storage
