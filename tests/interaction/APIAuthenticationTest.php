@@ -3,7 +3,9 @@
 namespace MrCoffer\Tests;
 
 use MrCoffer\User;
+use Illuminate\Http\Request;
 use Laravel\Passport\Client;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -33,6 +35,14 @@ class APIAuthenticationTest extends TestCase
     protected $apiClient;
 
     /**
+     * Used to help us format Http Requests that we will
+     * be making in our test cases.
+     *
+     * @var Request
+     */
+    protected $request;
+
+    /**
      * Initialize requirements for these tests.
      *
      * @return void
@@ -41,15 +51,16 @@ class APIAuthenticationTest extends TestCase
     {
         parent::setUp();
 
-        // Make a new User and save it to the database.
-        $this->user = factory(User::class)->create();
+        $this->request = new Request();
+
+        $this->user = factory(User::class)->create(['password' => Hash::make('secret')]);
 
         // We are using the Laravel/Passport package to manage our API authentication
         // therefore we must install it in order to retrieve any tokens.
         Artisan::call('passport:install');
 
         $client = new Client();
-        $this->apiClient = $client->newQuery()->where('name', ' Password Grant Client')->firstOrFail();
+        $this->apiClient = $client->newQuery()->where('name', '=', ' Password Grant Client')->firstOrFail();
     }
 
     /**
@@ -91,12 +102,27 @@ class APIAuthenticationTest extends TestCase
             'client_id'         => $this->apiClient->getAttribute('id'),
             'client_secret'     => $this->apiClient->getAttribute('secret'),
             'username'          => $this->user->getAttribute('email'),
-            'password'          => $this->user->getAttribute('password'),
+            'password'          => 'secret',
         ];
 
-        // The message that should be received if we have successfully authenticated.
-        $authorizedMessage = "You have arrived {$this->user->getAttribute('name')}.";
+        // Send the request to the token end point and store the Http Response.
+        $response = $this->call('POST', '/oauth/token', $formData);
 
-        $this->json('POST', '/', $formData)->see($authorizedMessage);
+        // We should of received json therefore let's decode it into an array.
+        $decodedResponse = json_decode($response->getContent());
+
+        // Assert that an access token was received.
+        $this->assertTrue(property_exists($decodedResponse, 'access_token'));
+
+        // Next let's make another request using that
+        // access token to view a protected route.
+        $accessToken = $decodedResponse->access_token;
+
+        $requestHeaders = [
+            'Accept'        => 'application/json',
+            'Authorization' => "Bearer {$accessToken}",
+        ];
+
+        $this->get('/', $requestHeaders)->see("You have arrived {$this->user->getAttribute('name')}.");
     }
 }
