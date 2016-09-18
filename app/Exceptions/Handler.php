@@ -3,6 +3,9 @@
 namespace MrCoffer\Exceptions;
 
 use Exception;
+use Whoops\Run;
+use Whoops\Handler\JsonResponseHandler;
+use Whoops\Handler\PrettyPageHandler;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -66,5 +69,33 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest('login');
+    }
+
+    /**
+     * Create a Symfony response for the given exception.
+     *
+     * @param  \Exception  $exception
+     * @return mixed
+     */
+    protected function convertExceptionToResponse(Exception $exception)
+    {
+        $handler = $this->container->make(PrettyPageHandler::class);
+
+        if (request()->wantsJson()) {
+            $handler = $this->container->make(JsonResponseHandler::class);
+        }
+
+        if (config('app.debug')) {
+            $whoops = $this->container->make(Run::class);
+            $whoops->pushHandler($handler);
+
+            return response()->make(
+                $whoops->handleException($exception),
+                method_exists($exception, 'getStatusCode') ? $exception->getStatusCode() : 500,
+                method_exists($exception, 'getHeaders') ? $exception->getHeaders() : []
+            );
+        }
+
+        return parent::convertExceptionToResponse($exception);
     }
 }

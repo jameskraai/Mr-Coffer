@@ -158,6 +158,7 @@ return [
         MrCoffer\Providers\AuthServiceProvider::class,
         MrCoffer\Providers\EventServiceProvider::class,
         MrCoffer\Providers\RouteServiceProvider::class,
+        MrCoffer\Providers\ErrorServiceProvider::class,
 
     ],
 
