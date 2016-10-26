@@ -1,5 +1,5 @@
 box = 'ubuntu/trusty64'
-hostname = 'api.mrcoffer.vagrant'
+hostname = 'mrcoffer.vagrant'
 ip = '192.168.13.10'
 cpus = 2
 memory = 2048
