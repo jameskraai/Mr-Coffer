@@ -27,5 +27,5 @@
     </label>
 
     <input type="submit" value="Sign In" />
-    <a href="{!! route('register') !!}">Register</a>
+    <a href="{!! url('/register') !!}">Register</a>
 @endsection
