@@ -14,7 +14,7 @@ services:
     networks:
       - default
   php:
-    image: php:7.1.6-fpm
+    image: php:7.1.6-fpm-alpine
     working_dir: /var/www/app
     volumes:
       - ./:/var/www/app
