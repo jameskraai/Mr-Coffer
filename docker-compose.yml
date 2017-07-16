@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    image: nginx:1.13.1-alpine
+    ports:
+      - "8080:443"
+    depends_on:
+      - php
+    volumes:
+      - ./:/var/www/app
+      - ./build/nginx/mrcoffer.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./build/certificates/nginx.key:/etc/nginx/ssl/nginx.key:ro
+      - ./build/certificates/nginx.crt:/etc/nginx/ssl/nginx.crt:ro
+    networks:
+      - default
+  php:
+    image: php:7.1.6-fpm
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
+    networks:
+      - default
+  database:
+    image: mariadb:latest
+    env_file: .env
+    networks:
+      - default
