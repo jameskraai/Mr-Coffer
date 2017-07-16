@@ -13,3 +13,5 @@ Homestead.json
 *.log
 *.retry
 build/log/
+.DS_Store
+build/certificates
