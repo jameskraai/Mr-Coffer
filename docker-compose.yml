@@ -20,6 +20,12 @@ services:
       - ./:/var/www/app
     networks:
       - default
+  composer:
+    image: composer:latest
+    command: install
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
   database:
     image: mariadb:latest
     env_file: .env
